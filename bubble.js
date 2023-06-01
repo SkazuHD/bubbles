@@ -26,7 +26,6 @@ class Bubble{
         context.arc(this.ballX, this.ballY, size, 0, Math.PI *2)
         context.fill()
         context.closePath()
-        console.log(this, "Drawn")
     }
 
     changeColor(color=[0,0,0,1]){
