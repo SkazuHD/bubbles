@@ -567,12 +567,15 @@ const canvas = document.getElementById('myCanvas');
 const context = canvas.getContext('2d');
 const currentYear = document.getElementById('currentYear');
 //Scales the canvas and all elements to the window size
+let smallest = Math.min(window.innerHeight, window.innerWidth);
+canvas.width = smallest * 0.8;
+canvas.height = smallest * 0.8;
 let globalScale = Math.min(canvas.height / 1200, canvas.width / 1200);
 
 function resizeCanvas() {
     let smallest = Math.min(window.innerHeight, window.innerWidth);
-    canvas.width = smallest * 0.95;
-    canvas.height = smallest * 0.95;
+    canvas.width = smallest * 0.8;
+    canvas.height = smallest * 0.8;
     globalScale = Math.min(canvas.height / 1200, canvas.width / 1200);
 
     //Set position of all elements
@@ -607,13 +610,13 @@ window.addEventListener('resize', ()=>{
 
 
 //CREATION
-let waterBubble = new Bubble([canvas.width*0.6, canvas.height*0.4],250, [0,0,255,1], 0.5*globalScale)
+let waterBubble = new Bubble([canvas.width*0.6, canvas.height*0.4],250, [0,0,255,.4], 0.5*globalScale)
 waterBubble.draw()
-let co2Bubble = new Bubble([canvas.width*0.4, canvas.height*0.3],100, [0,0,0,.5], .8*globalScale)
+let co2Bubble = new Bubble([canvas.width*0.4, canvas.height*0.3],100, [0,0,0,.3], .8*globalScale)
 co2Bubble.draw()
-let arcticIceBubble = new Bubble([canvas.width*0.2, canvas.height*0.8],10, [66,135,245,.5], 10*globalScale)
+let arcticIceBubble = new Bubble([canvas.width*0.2, canvas.height*0.8],10, [66,135,245,.5], 20*globalScale)
 arcticIceBubble.draw()
-let antarcticIceBubble = new Bubble([canvas.width*0.8, canvas.height*0.2],10, [66,135,245,.5], 10*globalScale)
+let antarcticIceBubble = new Bubble([canvas.width*0.8, canvas.height*0.2],10, [66,135,245,.5], 12*globalScale)
 antarcticIceBubble.draw()
 
 
