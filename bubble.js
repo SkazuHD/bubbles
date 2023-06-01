@@ -11,6 +11,8 @@ class Bubble{
         this.ballX = position[0]
         this.ballY = position[1]
         this.scale = scale
+
+
     }
     move(){
 
@@ -51,5 +53,6 @@ class Bubble{
         this.ballY = position[1]
         this.draw()
     }
+
 
 }

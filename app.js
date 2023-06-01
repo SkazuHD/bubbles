@@ -5,6 +5,7 @@ class Dataset {
         this.value = value;
     }
 }
+
 //DATA
 
 
@@ -683,4 +684,4 @@ let animation = setInterval(() => {
     }
     animate(year)
     year = [...allYears][[...allYears].indexOf(year) + 1]
-}, 10000)
+}, 250)
