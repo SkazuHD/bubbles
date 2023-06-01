@@ -590,8 +590,8 @@ function animate(year) {
 
     waterBubble.changeSize(waterLevel!== undefined ?allData[year].waterLevel.value:10)
     co2Bubble.setSize(co2!== undefined ?allData[year].co2.value:0)
-    arcticIceBubble.setSize(arcticIce!== undefined ?allData[year].arcticIce.value:10)
-    antarcticIceBubble.setSize(antarcticIce!== undefined ?allData[year].antarcticIce.value:10)
+    arcticIceBubble.setSize(arcticIce!== undefined ?allData[year].arcticIce.value*5:100)
+    antarcticIceBubble.setSize(antarcticIce!== undefined ?allData[year].antarcticIce.value*5:100)
 }
 
 //Animate the bubbles every 1000ms year by year
