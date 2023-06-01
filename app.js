@@ -6,6 +6,8 @@ class Dataset {
     }
 }
 //DATA
+
+
 const co2 = [
     315.232,
     315.9808333,
@@ -539,9 +541,24 @@ for (let i = 0; i < antarcticIce.length; i++) {
     antarcticIce[i] = new Dataset(antarcticIceYear[i], antarcticIce[i])
 }
 
-console.log(co2, waterLevel, globalTemp, arcticIce, antarcticIce)
+// Combine all Years into one Set
 
-//TODO Merge all datasets into one Object by year
+const allYears = new Set([...new Set(co2Year), ...new Set(waterLevelYear), ...new Set(globalTempYear), ...new Set(arcticIceYear), ...new Set(antarcticIceYear)])
+
+//Merge all datasets into one Object by year using the Set
+const allData = {}
+for (let year of allYears) {
+    allData[year] = {
+        co2: co2.find((element) => element.year === year),
+        waterLevel: waterLevel.find((element) => element.year === year),
+        globalTemp: globalTemp.find((element) => element.year === year),
+        arcticIce: arcticIce.find((element) => element.year === year),
+        antarcticIce: antarcticIce.find((element) => element.year === year),
+    }
+}
+
+console.log(allData)
+
 
 
 
@@ -562,3 +579,29 @@ antarcticIceBubble.draw()
 
 
 //ANIMATION
+
+function animate(year) {
+    //Update the size of the bubbles based on the data
+    let waterLevel = allData[year].waterLevel
+    let co2 = allData[year].co2
+    let arcticIce = allData[year].arcticIce
+    let antarcticIce = allData[year].antarcticIce
+    console.log(year)
+
+    waterBubble.changeSize(waterLevel!== undefined ?allData[year].waterLevel.value:10)
+    co2Bubble.setSize(co2!== undefined ?allData[year].co2.value:0)
+    arcticIceBubble.setSize(arcticIce!== undefined ?allData[year].arcticIce.value:10)
+    antarcticIceBubble.setSize(antarcticIce!== undefined ?allData[year].antarcticIce.value:10)
+}
+
+//Animate the bubbles every 1000ms year by year
+let year = [...allYears][0]
+let lastYear = [...allYears][allYears.size - 1]
+setInterval(() => {
+    //Clear the canvas
+    if (year <= lastYear) {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+    }
+    animate(year)
+    year = [...allYears][[...allYears].indexOf(year) + 1]
+}, 1000)
