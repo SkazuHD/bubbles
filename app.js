@@ -571,26 +571,26 @@ const currentYear = document.getElementById('currentYear');
 //Relative Positions and Scale
 const co2Rel ={
     initialVal: 100,
-    pos: ()=> {return [canvas.width * 0.4, canvas.height * 0.3]},
+    pos: ()=> {return [canvas.width * 0.45, canvas.height * 0.45]},
     color: [0,0,0,.3],
     scale: 0.8,
 
 }
 const waterLevelRel ={
     initialVal: 250,
-    pos: ()=> {return [canvas.width * 0.6, canvas.height * 0.4]},
+    pos: ()=> {return [canvas.width * 0.6, canvas.height * 0.55]},
     color: [0,0,255,.4],
     scale: .4,
 }
 const arcticIceRel ={
     initialVal: 10,
-    pos: ()=>{ return [canvas.width * 0.8, canvas.height * 0.2]},
+    pos: ()=>{ return [canvas.width * 0.75, canvas.height * 0.25]},
     color: [66,135,245,.5],
     scale: 20,
 }
 const antarcticIceRel ={
     initialVal: 10,
-    pos: ()=> {return [canvas.width * 0.2, canvas.height * 0.8]},
+    pos: ()=> {return [canvas.width * 0.25, canvas.height * 0.75]},
     color: [66,135,245,.5],
     scale: 12,
 }
@@ -660,13 +660,9 @@ function animate(year) {
     let arcticIce = allData[year].arcticIce
     let antarcticIce = allData[year].antarcticIce
     currentYear.innerHTML = year
-    waterBubble.setPosition([canvas.width*0.6, canvas.height*0.4])
     waterBubble.changeSize(waterLevel!== undefined ?allData[year].waterLevel.value:0)
-    co2Bubble.setPosition([canvas.width*0.4, canvas.height*0.3])
     co2Bubble.setSize(co2!== undefined ?allData[year].co2.value:co2Bubble.radius)
-    arcticIceBubble.setPosition([canvas.width*0.8, canvas.height*0.2])
     arcticIceBubble.setSize(arcticIce!== undefined ?allData[year].arcticIce.value:arcticIceBubble.radius)
-    antarcticIceBubble.setPosition([canvas.width*0.2, canvas.height*0.8])
     antarcticIceBubble.setSize(antarcticIce!== undefined ?allData[year].antarcticIce.value:antarcticIceBubble.radius)
 }
 
