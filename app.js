@@ -581,8 +581,8 @@ function resizeCanvas() {
     //Set position of all elements
     waterBubble.setPosition([canvas.width*0.6, canvas.height*0.4])
     co2Bubble.setPosition([canvas.width*0.4, canvas.height*0.3])
-    arcticIceBubble.setPosition([canvas.width*0.2, canvas.height*0.8])
-    antarcticIceBubble.setPosition([canvas.width*0.8, canvas.height*0.2])
+    arcticIceBubble.setPosition([canvas.width*0.8, canvas.height*0.2])
+    antarcticIceBubble.setPosition([canvas.width*0.2, canvas.height*0.8])
 
     //Set Scale of all elements
     waterBubble.scale = 0.5*globalScale
@@ -614,9 +614,9 @@ let waterBubble = new Bubble([canvas.width*0.6, canvas.height*0.4],250, [0,0,255
 waterBubble.draw()
 let co2Bubble = new Bubble([canvas.width*0.4, canvas.height*0.3],100, [0,0,0,.3], .8*globalScale)
 co2Bubble.draw()
-let arcticIceBubble = new Bubble([canvas.width*0.2, canvas.height*0.8],10, [66,135,245,.5], 20*globalScale)
+let arcticIceBubble = new Bubble([canvas.width*0.8, canvas.height*0.2],10, [66,135,245,.5], 20*globalScale)
 arcticIceBubble.draw()
-let antarcticIceBubble = new Bubble([canvas.width*0.8, canvas.height*0.2],10, [66,135,245,.5], 12*globalScale)
+let antarcticIceBubble = new Bubble([canvas.width*0.2, canvas.height*0.8],10, [66,135,245,.5], 12*globalScale)
 antarcticIceBubble.draw()
 
 
