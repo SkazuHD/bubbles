@@ -565,15 +565,55 @@ console.log(allData)
 //CONFIG
 const canvas = document.getElementById('myCanvas');
 const context = canvas.getContext('2d');
+const currentYear = document.getElementById('currentYear');
+//Scales the canvas and all elements to the window size
+let globalScale = Math.min(canvas.height / 1200, canvas.width / 1200);
+
+function resizeCanvas() {
+    let smallest = Math.min(window.innerHeight, window.innerWidth);
+    canvas.width = smallest * 0.95;
+    canvas.height = smallest * 0.95;
+    globalScale = Math.min(canvas.height / 1200, canvas.width / 1200);
+
+    //Set position of all elements
+    waterBubble.setPosition([canvas.width*0.6, canvas.height*0.4])
+    co2Bubble.setPosition([canvas.width*0.4, canvas.height*0.3])
+    arcticIceBubble.setPosition([canvas.width*0.2, canvas.height*0.8])
+    antarcticIceBubble.setPosition([canvas.width*0.8, canvas.height*0.2])
+
+    //Set Scale of all elements
+    waterBubble.scale = 0.5*globalScale
+    co2Bubble.scale = .8*globalScale
+    arcticIceBubble.scale = 10*globalScale
+    antarcticIceBubble.scale = 10*globalScale
+
+    //Clear the canvas
+    context.clearRect(0, 0, canvas.width, canvas.height);
+
+    //Draw all elements
+    waterBubble.draw()
+    co2Bubble.draw()
+    arcticIceBubble.draw()
+    antarcticIceBubble.draw()
+
+
+}
+
+//Resize the canvas when the window is resized
+
+window.addEventListener('resize', ()=>{
+    resizeCanvas()
+;});
+
 
 //CREATION
-let waterBubble = new Bubble([600, 400],100, [0,0,255,1])
+let waterBubble = new Bubble([canvas.width*0.6, canvas.height*0.4],250, [0,0,255,1], 0.5*globalScale)
 waterBubble.draw()
-let co2Bubble = new Bubble([400, 300],150, [0,0,0,.5])
+let co2Bubble = new Bubble([canvas.width*0.4, canvas.height*0.3],100, [0,0,0,.5], .8*globalScale)
 co2Bubble.draw()
-let arcticIceBubble = new Bubble([200, 800],50, [66,135,245,.5])
+let arcticIceBubble = new Bubble([canvas.width*0.2, canvas.height*0.8],10, [66,135,245,.5], 10*globalScale)
 arcticIceBubble.draw()
-let antarcticIceBubble = new Bubble([800, 200],50, [66,135,245,.5])
+let antarcticIceBubble = new Bubble([canvas.width*0.8, canvas.height*0.2],10, [66,135,245,.5], 10*globalScale)
 antarcticIceBubble.draw()
 
 
@@ -586,22 +626,29 @@ function animate(year) {
     let co2 = allData[year].co2
     let arcticIce = allData[year].arcticIce
     let antarcticIce = allData[year].antarcticIce
-    console.log(year)
-
-    waterBubble.changeSize(waterLevel!== undefined ?allData[year].waterLevel.value:10)
-    co2Bubble.setSize(co2!== undefined ?allData[year].co2.value:0)
-    arcticIceBubble.setSize(arcticIce!== undefined ?allData[year].arcticIce.value*5:100)
-    antarcticIceBubble.setSize(antarcticIce!== undefined ?allData[year].antarcticIce.value*5:100)
+    currentYear.innerHTML = year
+    waterBubble.setPosition([canvas.width*0.6, canvas.height*0.4])
+    waterBubble.changeSize(waterLevel!== undefined ?allData[year].waterLevel.value:0)
+    co2Bubble.setPosition([canvas.width*0.4, canvas.height*0.3])
+    co2Bubble.setSize(co2!== undefined ?allData[year].co2.value:co2Bubble.radius)
+    arcticIceBubble.setPosition([canvas.width*0.2, canvas.height*0.8])
+    arcticIceBubble.setSize(arcticIce!== undefined ?allData[year].arcticIce.value:arcticIceBubble.radius)
+    antarcticIceBubble.setPosition([canvas.width*0.8, canvas.height*0.2])
+    antarcticIceBubble.setSize(antarcticIce!== undefined ?allData[year].antarcticIce.value:antarcticIceBubble.radius)
 }
 
 //Animate the bubbles every 1000ms year by year
 let year = [...allYears][0]
 let lastYear = [...allYears][allYears.size - 1]
-setInterval(() => {
+let animation = setInterval(() => {
     //Clear the canvas
     if (year <= lastYear) {
         context.clearRect(0, 0, canvas.width, canvas.height);
+
+    }else {
+        //Clear the interval when the last year is reached
+        clearInterval(animation);
     }
     animate(year)
     year = [...allYears][[...allYears].indexOf(year) + 1]
-}, 1000)
+}, 100)
