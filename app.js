@@ -596,7 +596,7 @@ const co2Rel ={
 
 }
 const waterLevelRel ={
-    initialVal: 100,
+    initialVal: 80,
     pos: ()=> {return [canvas.width * 0.6, canvas.height * 0.55]},
     color: [0,0,255,.4],
     scale: 2,
@@ -679,6 +679,7 @@ function animate(year) {
     let co2 = allData[year].co2
     let arcticIce = allData[year].arcticIce
     let antarcticIce = allData[year].antarcticIce
+    let globalTemp = allData[year].globalTemp
     currentYear.innerHTML = year
     waterBubble.setSize(waterLevel!== undefined ? waterLevelRel.initialVal+allData[year].waterLevel.value: waterBubble.radius)
     co2Bubble.setSize(co2!== undefined ?allData[year].co2.value:co2Bubble.radius)
