@@ -585,13 +585,13 @@ const waterLevelRel ={
 const arcticIceRel ={
     initialVal: 10,
     pos: ()=>{ return [canvas.width * 0.75, canvas.height * 0.25]},
-    color: [66,135,245,.5],
+    color: [255,235,245,.5],
     scale: 20,
 }
 const antarcticIceRel ={
     initialVal: 10,
     pos: ()=> {return [canvas.width * 0.25, canvas.height * 0.75]},
-    color: [66,135,245,.5],
+    color: [255,235,245,.5],
     scale: 12,
 }
 

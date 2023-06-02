@@ -28,7 +28,7 @@ body{
     top: 35%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 40em;
+    font-size: clamp(8em, 30vw, 30em);
     margin: 0;
     color: rgba(255, 255, 255, .1);
     z-index: -1;
