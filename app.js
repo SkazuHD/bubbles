@@ -558,15 +558,21 @@ for (let year of allYears) {
     }
 }
 
-console.log(allData)
-
-
-
 
 //CONFIG
 const canvas = document.getElementById('myCanvas');
 const context = canvas.getContext('2d');
 const currentYear = document.getElementById('currentYear');
+const timeline = document.getElementById("timeline")
+let animation
+timeline.min = [...allYears][0]
+timeline.max =  [...allYears][allYears.size - 1]
+
+timeline.addEventListener("input", ()=>{
+    clearInterval(animation)
+    console.log(timeline.value, "timeline Input")
+    startAnimation(timeline.value)
+})
 
 //Relative Positions and Scale
 const co2Rel ={
@@ -577,10 +583,10 @@ const co2Rel ={
 
 }
 const waterLevelRel ={
-    initialVal: 250,
+    initialVal: 100,
     pos: ()=> {return [canvas.width * 0.6, canvas.height * 0.55]},
     color: [0,0,255,.4],
-    scale: .4,
+    scale: 2,
 }
 const arcticIceRel ={
     initialVal: 10,
@@ -629,6 +635,7 @@ function resizeCanvas() {
     arcticIceBubble.draw()
     antarcticIceBubble.draw()
 
+    timeline.value = year
 
 }
 
@@ -654,30 +661,36 @@ antarcticIceBubble.draw()
 //ANIMATION
 
 function animate(year) {
+    console.log(year, "year in animation")
     //Update the size of the bubbles based on the data
+    context.clearRect(0, 0, canvas.width, canvas.height);
     let waterLevel = allData[year].waterLevel
     let co2 = allData[year].co2
     let arcticIce = allData[year].arcticIce
     let antarcticIce = allData[year].antarcticIce
     currentYear.innerHTML = year
-    waterBubble.changeSize(waterLevel!== undefined ?allData[year].waterLevel.value:0)
+    waterBubble.setSize(waterLevel!== undefined ? waterLevelRel.initialVal+allData[year].waterLevel.value: waterBubble.radius)
     co2Bubble.setSize(co2!== undefined ?allData[year].co2.value:co2Bubble.radius)
     arcticIceBubble.setSize(arcticIce!== undefined ?allData[year].arcticIce.value:arcticIceBubble.radius)
     antarcticIceBubble.setSize(antarcticIce!== undefined ?allData[year].antarcticIce.value:antarcticIceBubble.radius)
+    timeline.value = year
 }
 
 //Animate the bubbles every 1000ms year by year
-let year = [...allYears][0]
 let lastYear = [...allYears][allYears.size - 1]
-let animation = setInterval(() => {
-    //Clear the canvas
-    if (year <= lastYear) {
-        context.clearRect(0, 0, canvas.width, canvas.height);
 
-    }else {
-        //Clear the interval when the last year is reached
-        clearInterval(animation);
-    }
-    animate(year)
-    year = [...allYears][[...allYears].indexOf(year) + 1]
-}, 250)
+
+function startAnimation(year) {
+     animation = setInterval(() => {
+        //Clear the canvas
+        if (year < lastYear) {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+        }else {
+            //Clear the interval when the last year is reached
+            clearInterval(animation);
+        }
+        animate(year)
+         year++
+         console.debug(year, lastYear)
+    }, 150)
+}
