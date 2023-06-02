@@ -569,9 +569,22 @@ timeline.min = [...allYears][0]
 timeline.max =  [...allYears][allYears.size - 1]
 
 timeline.addEventListener("input", ()=>{
+    currentYear.innerHTML = timeline.value
     clearInterval(animation)
     console.log(timeline.value, "timeline Input")
-    startAnimation(timeline.value)
+    if (!canvas.classList.contains("paused")){
+        startAnimation(timeline.value)
+    }else {
+        startAnimation(timeline.value, true)
+    }
+})
+canvas.addEventListener("click", ()=>{
+    canvas.classList.toggle("paused")
+    if(canvas.classList.contains("paused")){
+        clearInterval(animation)
+    }else {
+        startAnimation(timeline.value)
+    }
 })
 
 //Relative Positions and Scale
@@ -635,8 +648,6 @@ function resizeCanvas() {
     arcticIceBubble.draw()
     antarcticIceBubble.draw()
 
-    timeline.value = year
-
 }
 
 //Resize the canvas when the window is resized
@@ -680,7 +691,13 @@ function animate(year) {
 let lastYear = [...allYears][allYears.size - 1]
 
 
-function startAnimation(year) {
+function startAnimation(year, once=false) {
+
+    if(once){
+        animate(year)
+        return
+    }
+
      animation = setInterval(() => {
         //Clear the canvas
         if (year < lastYear) {
