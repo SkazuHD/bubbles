@@ -709,6 +709,38 @@ function startAnimation(year, once=false) {
         }
         animate(year)
          year++
-         console.debug(year, lastYear)
+         //console.debug(year, lastYear)
     }, 150)
 }
+
+function future(year){
+    if(allData[year] !== undefined){
+        if(allData[year].antarcticIce !== undefined){
+            return allData[year].antarcticIce
+        }
+    }
+
+
+    if(year < timeline.min+2){
+        //DONT RUN WHEN IN THE PAST
+        return;
+    }else {
+        console.log(year);
+        if (allData[year-2].antarcticIce !== undefined){
+            //RECHNEN AND PUSH
+            return;
+        }else {
+            future(year-1)
+        }
+
+
+
+
+
+
+    }
+
+
+}
+c
+future(2100)
