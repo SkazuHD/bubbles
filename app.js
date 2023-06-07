@@ -580,10 +580,17 @@ timeline.addEventListener("input", ()=>{
 })
 canvas.addEventListener("click", ()=>{
     canvas.classList.toggle("paused")
+    let btn = document.getElementById("play-pause")
     if(canvas.classList.contains("paused")){
         clearInterval(animation)
+        btn.classList.add("paused")
     }else {
         startAnimation(timeline.value)
+        btn.classList.remove("paused")
+        btn.classList.add("play")
+        setTimeout(()=>{
+            btn.classList.remove("play")
+        },1000)
     }
 })
 
@@ -605,13 +612,13 @@ const arcticIceRel ={
     initialVal: 10,
     pos: ()=>{ return [canvas.width * 0.75, canvas.height * 0.25]},
     color: [255,235,245,.8],
-    scale: 20,
+    scale: 18,
 }
 const antarcticIceRel ={
-    initialVal: 10,
+    initialVal: 8,
     pos: ()=> {return [canvas.width * 0.25, canvas.height * 0.75]},
     color: [255,235,245,.8],
-    scale: 12,
+    scale: 18,
 }
 
 //Initial Size
@@ -742,5 +749,3 @@ function future(year){
 
 
 }
-c
-future(2100)

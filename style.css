@@ -46,7 +46,23 @@ body{
     transform: translate(-50%, -50%);
     pointer-events: none;
     user-select: none;
+    display: none;
+    width: 4rem;
+    height: 4rem;
+    background-color: transparent;
 }
+#play-pause.paused{
+    display: block;
+    border-color: transparent transparent transparent #ffffff;
+    border-width: 2rem 0 2rem 4rem;
+}
+#play-pause.play{
+    display: block;
+    border-style: double;
+    border-width: 0 0 0 2rem;
+    border-color: transparent transparent transparent #ffffff;
+}
+
 #timeline{
     width: 100%;
     margin: 0;
