@@ -6,17 +6,24 @@
     <link href="style.css" rel="stylesheet">
 </head>
 <body>
-    <h1 class="title">The melting Problem</h1>
-    <div class="chart">
-        <h2 id="currentYear">1958</h2>
-        <canvas id="myCanvas" width="1000px" height="1000px" class="paused"></canvas>
-        <button id="play-pause" class="paused"></button>
-        <label>
-            <input type="range" id="timeline">
-        </label>
-    </div>
+<div class="scroll-snap-container">
+    <section class="snap-item" id="intro">
+        <h1 class="title">The melting Problem</h1>
+    </section>
+    <section class="snap-item" id="graph">
+        <div class="chart">
+            <h2 id="currentYear">1958</h2>
+            <canvas class="paused" height="1000px" id="myCanvas" width="1000px"></canvas>
+            <button class="paused" id="play-pause"></button>
+            <label>
+                <input id="timeline" type="range">
+            </label>
+        </div>
+    </section>
+</div>
 
-    <script src="bubble.js"></script>
-    <script src="app.js"></script>
+
+<script src="bubble.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
