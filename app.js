@@ -598,26 +598,26 @@ canvas.addEventListener("click", ()=>{
 const co2Rel ={
     initialVal: 100,
     pos: ()=> {return [canvas.width * 0.45, canvas.height * 0.45]},
-    color: [0,0,0,.3],
+    color: [70,70,70,.5],
     scale: 0.8,
 
 }
 const waterLevelRel ={
     initialVal: 80,
     pos: ()=> {return [canvas.width * 0.6, canvas.height * 0.55]},
-    color: [0,0,255,.4],
+    color: [0,0,255,1],
     scale: 2,
 }
 const arcticIceRel ={
     initialVal: 10,
     pos: ()=>{ return [canvas.width * 0.75, canvas.height * 0.25]},
-    color: [255,235,245,.8],
+    color: [255,235,245,1],
     scale: 18,
 }
 const antarcticIceRel ={
     initialVal: 8,
     pos: ()=> {return [canvas.width * 0.25, canvas.height * 0.75]},
-    color: [255,235,245,.8],
+    color: [255,235,245,1],
     scale: 18,
 }
 
