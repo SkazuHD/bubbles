@@ -49,6 +49,11 @@ body {
     width: 100%;
 }
 
+#myCanvas {
+    pointer-events: all;
+    cursor: pointer;
+}
+
 #currentYear {
     position: absolute;
     /*Place in Center behind chart*/
