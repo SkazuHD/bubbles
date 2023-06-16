@@ -601,7 +601,7 @@ const co2Rel = {
     pos: () => {
         return [canvas.width * 0.45, canvas.height * 0.45]
     },
-    color: [70, 70, 70, .5],
+    color: [170, 170, 170, .5],
     scale: 0.8,
 
 }
