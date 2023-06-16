@@ -143,7 +143,7 @@ const co2Year = [
     2020,
     2021,
     2022,
-    ]
+]
 for (let i = 0; i < co2.length; i++) {
     co2[i] = new Dataset(co2Year[i], co2[i])
 }
@@ -216,71 +216,71 @@ for (let i = 0; i < waterLevel.length; i++) {
 }
 
 const globalTemp = [
-    0,12,
-0.06,
-0.06,
-0.08,
-0.06,
-0.08,
--0.08,
--0.04,
-0.02,
-0.00,
-0.02,
-0.19,
-0.07,
--0.06,
-0.12,
-0.15,
--0.01,
--0.02,
-0.02,
-0.20,
-0.14,
-0.27,
-0.28,
-0.25,
-0.24,
-0.32,
-0.21,
-0.18,
-0.23,
-0.38,
-0.33,
-0.28,
-0.37,
-0.34,
-0.25,
-0.26,
-0.30,
-0.34,
-0.31,
-0.47,
-0.52,
-0.31,
-0.33,
-0.45,
-0.48,
-0.50,
-0.49,
-0.49,
-0.48,
-0.40,
-0.39,
-0.52,
-0.53,
-0.41,
-0.48,
-0.51,
-0.61,
-0.72,
-0.75,
-0.69,
-0.66,
-0.74,
-0.72,
-0.63,
-0.67]
+    0, 12,
+    0.06,
+    0.06,
+    0.08,
+    0.06,
+    0.08,
+    -0.08,
+    -0.04,
+    0.02,
+    0.00,
+    0.02,
+    0.19,
+    0.07,
+    -0.06,
+    0.12,
+    0.15,
+    -0.01,
+    -0.02,
+    0.02,
+    0.20,
+    0.14,
+    0.27,
+    0.28,
+    0.25,
+    0.24,
+    0.32,
+    0.21,
+    0.18,
+    0.23,
+    0.38,
+    0.33,
+    0.28,
+    0.37,
+    0.34,
+    0.25,
+    0.26,
+    0.30,
+    0.34,
+    0.31,
+    0.47,
+    0.52,
+    0.31,
+    0.33,
+    0.45,
+    0.48,
+    0.50,
+    0.49,
+    0.49,
+    0.48,
+    0.40,
+    0.39,
+    0.52,
+    0.53,
+    0.41,
+    0.48,
+    0.51,
+    0.61,
+    0.72,
+    0.75,
+    0.69,
+    0.66,
+    0.74,
+    0.72,
+    0.63,
+    0.67]
 const globalTempYear = [
     1958,
     1959,
@@ -562,62 +562,71 @@ for (let year of allYears) {
 //CONFIG
 const canvas = document.getElementById('myCanvas');
 const context = canvas.getContext('2d');
+const bubbles = [];
 const currentYear = document.getElementById('currentYear');
 const timeline = document.getElementById("timeline")
 let animation
 timeline.min = [...allYears][0]
-timeline.max =  [...allYears][allYears.size - 1]
+timeline.max = [...allYears][allYears.size - 1]
 
-timeline.addEventListener("input", ()=>{
+timeline.addEventListener("input", () => {
     currentYear.innerHTML = timeline.value
     clearInterval(animation)
     console.log(timeline.value, "timeline Input")
-    if (!canvas.classList.contains("paused")){
+    if (!canvas.classList.contains("paused")) {
         startAnimation(timeline.value)
-    }else {
+    } else {
         startAnimation(timeline.value, true)
     }
 })
-canvas.addEventListener("click", ()=>{
+canvas.addEventListener("click", () => {
     canvas.classList.toggle("paused")
     let btn = document.getElementById("play-pause")
-    if(canvas.classList.contains("paused")){
+    if (canvas.classList.contains("paused")) {
         clearInterval(animation)
         btn.classList.add("paused")
-    }else {
+    } else {
         startAnimation(timeline.value)
         btn.classList.remove("paused")
         btn.classList.add("play")
-        setTimeout(()=>{
+        setTimeout(() => {
             btn.classList.remove("play")
-        },1000)
+        }, 1000)
     }
 })
 
 //Relative Positions and Scale
-const co2Rel ={
+const co2Rel = {
     initialVal: 100,
-    pos: ()=> {return [canvas.width * 0.45, canvas.height * 0.45]},
-    color: [70,70,70,.5],
+    pos: () => {
+        return [canvas.width * 0.45, canvas.height * 0.45]
+    },
+    color: [70, 70, 70, .5],
     scale: 0.8,
 
 }
-const waterLevelRel ={
+const waterLevelRel = {
     initialVal: 80,
-    pos: ()=> {return [canvas.width * 0.6, canvas.height * 0.55]},
-    color: [0,0,255,1],
+    pos: () => {
+        return [canvas.width * 0.6, canvas.height * 0.55]
+    },
+    color: [0, 0, 255, 1],
     scale: 2,
 }
-const arcticIceRel ={
+const arcticIceRel = {
     initialVal: 10,
-    pos: ()=>{ return [canvas.width * 0.75, canvas.height * 0.25]},
-    color: [255,235,245,1],
+    pos: () => {
+        return [canvas.width * 0.75, canvas.height * 0.25]
+    },
+    color: [255, 235, 245, 1],
     scale: 18,
 }
-const antarcticIceRel ={
+const antarcticIceRel = {
     initialVal: 8,
-    pos: ()=> {return [canvas.width * 0.25, canvas.height * 0.75]},
-    color: [255,235,245,1],
+    pos: () => {
+        return [canvas.width * 0.25, canvas.height * 0.75]
+    },
+    color: [255, 235, 245, 1],
     scale: 18,
 }
 
@@ -641,10 +650,10 @@ function resizeCanvas() {
     //Set Scale of all elements
 
 
-    waterBubble.scale = waterLevelRel.scale*globalScale
-    co2Bubble.scale = co2Rel.scale*globalScale
-    arcticIceBubble.scale = arcticIceRel.scale*globalScale
-    antarcticIceBubble.scale = antarcticIceRel.scale*globalScale
+    waterBubble.scale = waterLevelRel.scale * globalScale
+    co2Bubble.scale = co2Rel.scale * globalScale
+    arcticIceBubble.scale = arcticIceRel.scale * globalScale
+    antarcticIceBubble.scale = antarcticIceRel.scale * globalScale
 
     //Clear the canvas
     context.clearRect(0, 0, canvas.width, canvas.height);
@@ -659,22 +668,23 @@ function resizeCanvas() {
 
 //Resize the canvas when the window is resized
 
-window.addEventListener('resize', ()=>{
+window.addEventListener('resize', () => {
     resizeCanvas()
-;});
+    ;
+});
 
 
 //CREATION
-let waterBubble = new Bubble(waterLevelRel.pos(),waterLevelRel.initialVal, waterLevelRel.color, waterLevelRel.scale*globalScale)
+let waterBubble = new Bubble(waterLevelRel.pos(), waterLevelRel.initialVal, waterLevelRel.color, waterLevelRel.scale * globalScale, "Water Level")
 waterBubble.draw()
-let co2Bubble = new Bubble(co2Rel.pos(),co2Rel.initialVal, co2Rel.color, co2Rel.scale*globalScale)
+let co2Bubble = new Bubble(co2Rel.pos(), co2Rel.initialVal, co2Rel.color, co2Rel.scale * globalScale, "CO2")
 co2Bubble.draw()
-let arcticIceBubble = new Bubble(arcticIceRel.pos(),arcticIceRel.initialVal, arcticIceRel.color, arcticIceRel.scale*globalScale)
+let arcticIceBubble = new Bubble(arcticIceRel.pos(), arcticIceRel.initialVal, arcticIceRel.color, arcticIceRel.scale * globalScale, "Arctic Ice")
 arcticIceBubble.draw()
-let antarcticIceBubble = new Bubble(antarcticIceRel.pos(),antarcticIceRel.initialVal, antarcticIceRel.color, antarcticIceRel.scale*globalScale)
+let antarcticIceBubble = new Bubble(antarcticIceRel.pos(), antarcticIceRel.initialVal, antarcticIceRel.color, antarcticIceRel.scale * globalScale, "Antarctic Ice")
 antarcticIceBubble.draw()
 
-
+bubbles.push(waterBubble, co2Bubble, arcticIceBubble, antarcticIceBubble);
 
 //ANIMATION
 
@@ -688,10 +698,10 @@ function animate(year) {
     let antarcticIce = allData[year].antarcticIce
     let globalTemp = allData[year].globalTemp
     currentYear.innerHTML = year
-    waterBubble.setSize(waterLevel!== undefined ? waterLevelRel.initialVal+allData[year].waterLevel.value: waterBubble.radius)
-    co2Bubble.setSize(co2!== undefined ?allData[year].co2.value:co2Bubble.radius)
-    arcticIceBubble.setSize(arcticIce!== undefined ?allData[year].arcticIce.value:arcticIceBubble.radius)
-    antarcticIceBubble.setSize(antarcticIce!== undefined ?allData[year].antarcticIce.value:antarcticIceBubble.radius)
+    waterBubble.setSize(waterLevel !== undefined ? waterLevelRel.initialVal + allData[year].waterLevel.value : waterBubble.radius)
+    co2Bubble.setSize(co2 !== undefined ? allData[year].co2.value : co2Bubble.radius)
+    arcticIceBubble.setSize(arcticIce !== undefined ? allData[year].arcticIce.value : arcticIceBubble.radius)
+    antarcticIceBubble.setSize(antarcticIce !== undefined ? allData[year].antarcticIce.value : antarcticIceBubble.radius)
     timeline.value = year
 }
 
@@ -699,50 +709,61 @@ function animate(year) {
 let lastYear = [...allYears][allYears.size - 1]
 
 
-function startAnimation(year, once=false) {
+function startAnimation(year, once = false) {
 
-    if(once){
+    if (once) {
         animate(year)
         return
     }
 
-     animation = setInterval(() => {
+    animation = setInterval(() => {
         //Clear the canvas
         if (year < lastYear) {
             context.clearRect(0, 0, canvas.width, canvas.height);
-        }else {
+        } else {
             //Clear the interval when the last year is reached
             clearInterval(animation);
         }
         animate(year)
-         year++
-         //console.debug(year, lastYear)
+        year++
+        //console.debug(year, lastYear)
     }, 150)
 }
 
-function future(year){
-    if(allData[year] !== undefined){
-        if(allData[year].antarcticIce !== undefined){
+canvas.addEventListener("bubbleHover", (e) => {
+    let bubble = e.bubble
+
+
+    //Redraw all bubbles except the hovered one
+    context.clearRect(0, 0, canvas.width, canvas.height);
+
+    bubbles.forEach(b => {
+        if (b !== bubble) {
+            b.draw()
+        } else {
+            console.log(b.text)
+        }
+    });
+})
+
+function future(year) {
+    if (allData[year] !== undefined) {
+        if (allData[year].antarcticIce !== undefined) {
             return allData[year].antarcticIce
         }
     }
 
 
-    if(year < timeline.min+2){
+    if (year < timeline.min + 2) {
         //DONT RUN WHEN IN THE PAST
-        return;
-    }else {
-        console.log(year);
-        if (allData[year-2].antarcticIce !== undefined){
+
+    } else {
+        if (allData[year - 2].antarcticIce !== undefined) {
             //RECHNEN AND PUSH
-            return;
-        }else {
-            future(year-1)
+
+        } else {
+            future(year - 1)
         }
-
-
-
-
 
 
     }

@@ -4,8 +4,10 @@ class Bubble {
     ballX
     ballY
     scale
+    text
 
-    constructor(position = [0, 0], radius, color = [0, 0, 0, 1], scale = 1) {
+    constructor(position = [0, 0], radius, color = [0, 0, 0, 1], scale = 1, text = "") {
+        this.text = text
         let [r, g, b, a] = color
         this.ballColor = `rgba(${r},${g},${b},${a})`
         this.radius = radius
@@ -20,10 +22,11 @@ class Bubble {
 
     }
 
-    draw() {
+    draw(scale = this.scale) {
+        //TODO ADD HOVER LOGIC HERE
         context.fillStyle = this.ballColor;
         context.beginPath()
-        let size = this.radius * this.scale
+        let size = this.radius * scale
         if (size < 0) {
             size = 0
             console.error(this, "Size is negative")
@@ -69,9 +72,16 @@ class Bubble {
             distance = Math.sqrt(distance[0] * distance[0] + distance[1] * distance[1])
 
             if (distance < this.radius * this.scale) {
-                console.log("hover")
-                console.log(distance, this.radius * this.scale)
-                console.log(this)
+
+                const event = new Event('bubbleHover')
+                event.bubble = this
+                canvas.dispatchEvent(event)
+
+                this.draw(this.scale * 1.2)
+            } else {
+                const event = new Event('bubbleHover')
+                event.bubble = null
+                // canvas.dispatchEvent(event)
             }
         })
     }
