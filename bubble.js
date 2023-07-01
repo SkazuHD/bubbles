@@ -5,6 +5,7 @@ class Bubble {
     ballY
     scale
     text
+    isHovered
 
     constructor(position = [0, 0], radius, color = [0, 0, 0, 1], scale = 1, text = "") {
         this.text = text
@@ -22,18 +23,44 @@ class Bubble {
 
     }
 
-    draw(scale = this.scale) {
-        //TODO ADD HOVER LOGIC HERE
-        context.fillStyle = this.ballColor;
-        context.beginPath()
+    draw(scale = this.scale, outline = false) {
         let size = this.radius * scale
         if (size < 0) {
             size = 0
             console.error(this, "Size is negative")
         }
+        if (outline){
+            if (this.isHovered)return
+            this.isHovered = true
+            context.fillStyle = "rgba(0,0,0, .5)"
+            context.beginPath()
+            context.arc(this.ballX, this.ballY, size+5, 0, Math.PI * 2)
+            context.fill()
+            context.closePath()
+
+            let image =new Image(400, 400)
+            image.src = "https://images.unsplash.com/photo-1493329025335-18542a61595f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80";
+            image.onload = () =>{
+                let posx = this.ballX - (this.radius * this.scale)
+                let posy = this.ballY - (this.radius * this.scale)
+                console.log(posx, posy)
+                setTimeout(()=>{
+                    context.drawImage(image, posx , posy, this.radius * 2 * this.scale ,this.radius * 2 * this.scale)
+
+                },10)
+
+
+            }
+        }else this.isHovered = false
+
+        context.fillStyle = this.ballColor;
+        context.beginPath()
+
         context.arc(this.ballX, this.ballY, size, 0, Math.PI * 2)
         context.fill()
         context.closePath()
+
+
     }
 
     changeColor(color = [0, 0, 0, 1]) {
@@ -77,7 +104,7 @@ class Bubble {
                 event.bubble = this
                 canvas.dispatchEvent(event)
 
-                this.draw(this.scale * 1.2)
+                this.draw(this.scale, true)
             } else {
                 const event = new Event('bubbleHover')
                 event.bubble = null

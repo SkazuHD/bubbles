@@ -606,12 +606,12 @@ const co2Rel = {
 
 }
 const waterLevelRel = {
-    initialVal: 80,
+    initialVal: 150,
     pos: () => {
         return [canvas.width * 0.6, canvas.height * 0.55]
     },
     color: [0, 0, 255, 1],
-    scale: 2,
+    scale: 1.5,
 }
 const arcticIceRel = {
     initialVal: 10,
@@ -619,7 +619,7 @@ const arcticIceRel = {
         return [canvas.width * 0.75, canvas.height * 0.25]
     },
     color: [255, 235, 245, 1],
-    scale: 18,
+    scale: 10,
 }
 const antarcticIceRel = {
     initialVal: 8,
@@ -627,20 +627,20 @@ const antarcticIceRel = {
         return [canvas.width * 0.25, canvas.height * 0.75]
     },
     color: [255, 235, 245, 1],
-    scale: 18,
+    scale: 10,
 }
 
 //Initial Size
 let smallest = Math.min(window.innerHeight, window.innerWidth);
-canvas.width = smallest * 0.94;
-canvas.height = smallest * 0.94;
-let globalScale = Math.min(canvas.height / 1200, canvas.width / 1200);
+canvas.width = smallest * 0.98;
+canvas.height = smallest * 0.98;
+let globalScale = Math.min(canvas.height / 1000, canvas.width / 1000);
 
 function resizeCanvas() {
     let smallest = Math.min(window.innerHeight, window.innerWidth);
-    canvas.width = smallest * 0.94;
-    canvas.height = smallest * 0.94;
-    globalScale = Math.min(canvas.height / 1200, canvas.width / 1200);
+    canvas.width = smallest * 0.98;
+    canvas.height = smallest * 0.98;
+    globalScale = Math.min(canvas.height / 1000, canvas.width / 1000);
 
     //Set position of all elements
     waterBubble.setPosition(waterLevelRel.pos())
@@ -729,9 +729,15 @@ function startAnimation(year, once = false) {
         //console.debug(year, lastYear)
     }, 150)
 }
-
+let lastHoverBubble;
 canvas.addEventListener("bubbleHover", (e) => {
     let bubble = e.bubble
+    if(lastHoverBubble !== bubble){
+        lastHoverBubble = bubble
+    }else {
+        return
+    }
+
 
 
     //Redraw all bubbles except the hovered one
@@ -742,8 +748,10 @@ canvas.addEventListener("bubbleHover", (e) => {
             b.draw()
         } else {
             console.log(b.text)
+
         }
     });
+
 })
 
 function future(year) {
