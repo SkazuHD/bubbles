@@ -597,7 +597,7 @@ canvas.addEventListener("click", () => {
 
 //Relative Positions and Scale
 const co2Rel = {
-    initialVal: 100,
+    initialVal: 300,
     pos: () => {
         return [canvas.width * 0.45, canvas.height * 0.45]
     },
@@ -606,12 +606,12 @@ const co2Rel = {
 
 }
 const waterLevelRel = {
-    initialVal: 150,
+    initialVal: 100,
     pos: () => {
         return [canvas.width * 0.6, canvas.height * 0.55]
     },
     color: [0, 0, 255, 1],
-    scale: 1.5,
+    scale: 1.8,
 }
 const arcticIceRel = {
     initialVal: 10,
@@ -675,13 +675,13 @@ window.addEventListener('resize', () => {
 
 
 //CREATION
-let waterBubble = new Bubble(waterLevelRel.pos(), waterLevelRel.initialVal, waterLevelRel.color, waterLevelRel.scale * globalScale, "Water Level")
+let waterBubble = new Bubble(waterLevelRel.pos(), waterLevelRel.initialVal, waterLevelRel.color, waterLevelRel.scale * globalScale, "Water Level", "mm")
 waterBubble.draw()
-let co2Bubble = new Bubble(co2Rel.pos(), co2Rel.initialVal, co2Rel.color, co2Rel.scale * globalScale, "CO2")
+let co2Bubble = new Bubble(co2Rel.pos(), co2Rel.initialVal, co2Rel.color, co2Rel.scale * globalScale, "Carbon dioxide", "ppm")
 co2Bubble.draw()
-let arcticIceBubble = new Bubble(arcticIceRel.pos(), arcticIceRel.initialVal, arcticIceRel.color, arcticIceRel.scale * globalScale, "Arctic Ice")
+let arcticIceBubble = new Bubble(arcticIceRel.pos(), arcticIceRel.initialVal, arcticIceRel.color, arcticIceRel.scale * globalScale, "Arctic Ice", "million km²")
 arcticIceBubble.draw()
-let antarcticIceBubble = new Bubble(antarcticIceRel.pos(), antarcticIceRel.initialVal, antarcticIceRel.color, antarcticIceRel.scale * globalScale, "Antarctic Ice")
+let antarcticIceBubble = new Bubble(antarcticIceRel.pos(), antarcticIceRel.initialVal, antarcticIceRel.color, antarcticIceRel.scale * globalScale, "Antarctic Ice", "million km²")
 antarcticIceBubble.draw()
 
 bubbles.push(waterBubble, co2Bubble, arcticIceBubble, antarcticIceBubble);

@@ -1,13 +1,14 @@
 class Bubble {
 
     radius
+    unit
     ballX
     ballY
     scale
     text
     isHovered
 
-    constructor(position = [0, 0], radius, color = [0, 0, 0, 1], scale = 1, text = "") {
+    constructor(position = [0, 0], radius, color = [0, 0, 0, 1], scale = 1, text = "", unit = "UNIT") {
         this.text = text
         let [r, g, b, a] = color
         this.ballColor = `rgba(${r},${g},${b},${a})`
@@ -15,6 +16,7 @@ class Bubble {
         this.ballX = position[0]
         this.ballY = position[1]
         this.scale = scale
+        this.unit = unit
         this.addHover();
 
     }
@@ -37,6 +39,7 @@ class Bubble {
             context.arc(this.ballX, this.ballY, size+5, 0, Math.PI * 2)
             context.fill()
             context.closePath()
+            /*
 
             let image =new Image(400, 400)
             image.src = "https://images.unsplash.com/photo-1493329025335-18542a61595f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80";
@@ -48,9 +51,8 @@ class Bubble {
                     context.drawImage(image, posx , posy, this.radius * 2 * this.scale ,this.radius * 2 * this.scale)
 
                 },10)
+*/
 
-
-            }
         }else this.isHovered = false
 
         context.fillStyle = this.ballColor;
@@ -59,6 +61,35 @@ class Bubble {
         context.arc(this.ballX, this.ballY, size, 0, Math.PI * 2)
         context.fill()
         context.closePath()
+
+        if(outline){
+            //Calculate Text Size
+            let textWidth = context.measureText(this.text).width
+            //Calcutate Ball Center
+            let posx = this.ballX - (textWidth/2) //- (this.radius * this.scale)
+            let posy = this.ballY //- (this.radius* this.scale)
+
+
+
+            //draw Tooltip box
+            context.fillStyle = "rgba(0,0,0, .8)"
+            context.beginPath()
+            let padding = 50
+            context.rect(posx - padding, posy - padding/2, textWidth + padding*2, 20 + padding)
+            context.fill()
+
+            context.closePath()
+
+            //SHOW TOOLTIP
+            context.fillStyle = "white"
+            context.font = "20px Arial"
+            context.fillText(this.text, posx, posy)
+
+
+            context.font = "14px Arial"
+            context.fillText(this.radius+" "+this.unit, posx, posy+20)
+
+        }
 
 
     }
