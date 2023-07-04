@@ -70,12 +70,14 @@ class Bubble {
             let posy = this.ballY //- (this.radius* this.scale)
 
 
+            let padding = 25
+            let offsetX = + (this.radius * this.scale) /8
+            let offsetY = - (this.radius * this.scale) /4
 
             //draw Tooltip box
             context.fillStyle = "rgba(0,0,0, .8)"
             context.beginPath()
-            let padding = 50
-            context.rect(posx - padding, posy - padding/2, textWidth + padding*2, 20 + padding)
+            context.rect(posx -padding + offsetX, posy-25 + offsetY, textWidth*1.45 + padding*2, 60)
             context.fill()
 
             context.closePath()
@@ -83,11 +85,11 @@ class Bubble {
             //SHOW TOOLTIP
             context.fillStyle = "white"
             context.font = "20px Arial"
-            context.fillText(this.text, posx, posy)
+            context.fillText(this.text, posx + offsetX, posy + offsetY)
 
 
             context.font = "14px Arial"
-            context.fillText(this.radius+" "+this.unit, posx, posy+20)
+            context.fillText(this.radius+" "+this.unit, posx+offsetX, posy+20+ offsetY)
 
         }
 
