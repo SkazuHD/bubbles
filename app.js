@@ -216,7 +216,7 @@ for (let i = 0; i < waterLevel.length; i++) {
 }
 
 const globalTemp = [
-    0, 12,
+    0.12,
     0.06,
     0.06,
     0.08,
@@ -670,13 +670,16 @@ function resizeCanvas() {
 
 window.addEventListener('resize', () => {
     resizeCanvas()
-    ;
 });
 
 
 //CREATION
 let waterBubble = new Bubble(waterLevelRel.pos(), waterLevelRel.initialVal, waterLevelRel.color, waterLevelRel.scale * globalScale, "Water Level", "mm")
 waterBubble.draw()
+waterBubble.temp = {
+    value: +0.00,
+    unit: "Celsius"
+}
 let co2Bubble = new Bubble(co2Rel.pos(), co2Rel.initialVal, co2Rel.color, co2Rel.scale * globalScale, "Carbon dioxide", "ppm")
 co2Bubble.draw()
 let arcticIceBubble = new Bubble(arcticIceRel.pos(), arcticIceRel.initialVal, arcticIceRel.color, arcticIceRel.scale * globalScale, "Arctic Ice", "million km²")
@@ -685,6 +688,7 @@ let antarcticIceBubble = new Bubble(antarcticIceRel.pos(), antarcticIceRel.initi
 antarcticIceBubble.draw()
 
 bubbles.push(waterBubble, co2Bubble, arcticIceBubble, antarcticIceBubble);
+
 
 //ANIMATION
 
@@ -698,6 +702,12 @@ function animate(year) {
     let antarcticIce = allData[year].antarcticIce
     let globalTemp = allData[year].globalTemp
     currentYear.innerHTML = year
+    waterBubble.temp = {
+        value: globalTemp !== undefined ? globalTemp.value : undefined,
+        unit: "Celsius"
+    }
+
+    waterBubble.changeColor(globalTemp !== undefined ? [allData[year].globalTemp.value * 300, 0, 255 - allData[year].globalTemp.value * 400, 1] : [0, 0, 255, 1])
     waterBubble.setSize(waterLevel !== undefined ? waterLevelRel.initialVal + allData[year].waterLevel.value : waterBubble.radius)
     co2Bubble.setSize(co2 !== undefined ? allData[year].co2.value : co2Bubble.radius)
     arcticIceBubble.setSize(arcticIce !== undefined ? allData[year].arcticIce.value : arcticIceBubble.radius)
@@ -723,6 +733,7 @@ function startAnimation(year, once = false) {
         } else {
             //Clear the interval when the last year is reached
             clearInterval(animation);
+            canvas.classList.add("paused")
         }
         animate(year)
         year++

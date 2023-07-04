@@ -31,6 +31,8 @@ class Bubble {
             size = 0
             console.error(this, "Size is negative")
         }
+
+        if(!canvas.classList.contains("paused")) outline = false
         if (outline){
             if (this.isHovered)return
             this.isHovered = true
@@ -62,6 +64,8 @@ class Bubble {
         context.fill()
         context.closePath()
 
+
+
         if(outline){
             //Calculate Text Size
             let textWidth = context.measureText(this.text).width
@@ -73,11 +77,13 @@ class Bubble {
             let padding = 25
             let offsetX = + (this.radius * this.scale) /8
             let offsetY = - (this.radius * this.scale) /4
+            let textHeight = this.temp ? 80 : 60;
 
             //draw Tooltip box
             context.fillStyle = "rgba(0,0,0, .8)"
             context.beginPath()
-            context.rect(posx -padding + offsetX, posy-25 + offsetY, textWidth*1.45 + padding*2, 60)
+
+            context.rect(posx -padding + offsetX, posy-25 + offsetY, textWidth*1.45 + padding*2, textHeight)
             context.fill()
 
             context.closePath()
@@ -91,6 +97,11 @@ class Bubble {
             context.font = "14px Arial"
             context.fillText(this.radius+" "+this.unit, posx+offsetX, posy+20+ offsetY)
 
+            if(this.temp){
+                context.font = "14px Arial"
+                context.fillText(this.temp.value+"°C", posx+offsetX, posy+40+ offsetY)
+            }
+
         }
 
 
@@ -98,8 +109,11 @@ class Bubble {
 
     changeColor(color = [0, 0, 0, 1]) {
         let [r, g, b, a] = color
+        if (r > 255 || g > 255 || b > 255 || a > 1) {
+            console.warn(this, "Color is out of range")
+            return
+        }
         this.ballColor = `rgba(${r},${g},${b},${a})`
-        this.draw()
     }
 
     //Changes the size of the bubble by a diffrence
