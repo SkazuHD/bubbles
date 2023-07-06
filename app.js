@@ -21,87 +21,36 @@ const co2 = [
   404.4125, 406.7583333, 408.715, 411.6541667, 414.2383333, 416.4508333,
   418.5641667, 421.04,
 ];
+const co21 = [
+  315.232, 315.9808333, 316.91, 317.6441667, 318.4541667, 318.9925, 319.6166667,
+  320.0358333, 321.3691667, 322.1808333, 323.05, 324.6233333, 325.6816667,
+  326.3191667, 327.4566667, 329.6775, 330.1916667, 331.1291667, 332.0266667,
+  333.8433333, 335.415, 336.835, 338.7625, 340.1191667, 341.4783333, 343.1525,
+  344.8683333, 346.3516667, 347.6083333, 349.3116667, 351.69, 353.205, 354.4525,
+  355.7041667, 356.5458333, 357.2158333, 358.9591667, 360.9683333, 362.7433333,
+  363.8766667, 366.84, 368.54, 369.7075, 371.3191667, 373.4525, 375.9833333,
+  377.6983333, 379.9833333, 382.0908333, 384.025, 385.8316667, 387.6425,
+  390.1016667, 391.8508333, 394.0558333, 396.7375, 398.8125, 401.0116667,
+  404.4125, 406.7583333, 408.715, 411.6541667, 414.2383333, 416.4508333,
+  418.5641667, 421.04,
+];
 const co2Year = [
-<<<<<<< HEAD
   1958, 1959, 1960, 1961, 1962, 1963, 1964, 1965, 1966, 1967, 1968, 1969, 1970,
   1971, 1972, 1973, 1974, 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 1983,
   1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996,
   1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
   2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022,
 ];
-=======
-    1958,
-    1959,
-    1960,
-    1961,
-    1962,
-    1963,
-    1964,
-    1965,
-    1966,
-    1967,
-    1968,
-    1969,
-    1970,
-    1971,
-    1972,
-    1973,
-    1974,
-    1975,
-    1976,
-    1977,
-    1978,
-    1979,
-    1980,
-    1981,
-    1982,
-    1983,
-    1984,
-    1985,
-    1986,
-    1987,
-    1988,
-    1989,
-    1990,
-    1991,
-    1992,
-    1993,
-    1994,
-    1995,
-    1996,
-    1997,
-    1998,
-    1999,
-    2000,
-    2001,
-    2002,
-    2003,
-    2004,
-    2005,
-    2006,
-    2007,
-    2008,
-    2009,
-    2010,
-    2011,
-    2012,
-    2013,
-    2014,
-    2015,
-    2016,
-    2017,
-    2018,
-    2019,
-    2020,
-    2021,
-    2022,
-]
->>>>>>> e7052faa9db1f7e11dac454728e697f6b2a23519
 for (let i = 0; i < co2.length; i++) {
   co2[i] = new Dataset(co2Year[i], co2[i]);
 }
 
 const waterLevel = [
+  -32.72, -30.53, -27.27, -21.27, -23.65, -20.04, -16.79, -11.21, -7.08, -3.71,
+  -1.75, 3.04, 4.51, 5.1, 7.28, 12.39, 13.69, 13.04, 23.29, 26.35, 30, 40.99,
+  43.15, 44.3, 48.53, 55.51, 56.55, 60.86, 63.82,
+];
+const waterLevel1 = [
   -32.72, -30.53, -27.27, -21.27, -23.65, -20.04, -16.79, -11.21, -7.08, -3.71,
   -1.75, 3.04, 4.51, 5.1, 7.28, 12.39, 13.69, 13.04, 23.29, 26.35, 30, 40.99,
   43.15, 44.3, 48.53, 55.51, 56.55, 60.86, 63.82,
@@ -116,7 +65,6 @@ for (let i = 0; i < waterLevel.length; i++) {
 }
 
 const globalTemp = [
-<<<<<<< HEAD
   0, 12, 0.06, 0.06, 0.08, 0.06, 0.08, -0.08, -0.04, 0.02, 0.0, 0.02, 0.19,
   0.07, -0.06, 0.12, 0.15, -0.01, -0.02, 0.02, 0.2, 0.14, 0.27, 0.28, 0.25,
   0.24, 0.32, 0.21, 0.18, 0.23, 0.38, 0.33, 0.28, 0.37, 0.34, 0.25, 0.26, 0.3,
@@ -133,73 +81,6 @@ const globalTemp1 = [
   0.63, 0.67,
 ];
 
-=======
-    0.12,
-    0.06,
-    0.06,
-    0.08,
-    0.06,
-    0.08,
-    -0.08,
-    -0.04,
-    0.02,
-    0.00,
-    0.02,
-    0.19,
-    0.07,
-    -0.06,
-    0.12,
-    0.15,
-    -0.01,
-    -0.02,
-    0.02,
-    0.20,
-    0.14,
-    0.27,
-    0.28,
-    0.25,
-    0.24,
-    0.32,
-    0.21,
-    0.18,
-    0.23,
-    0.38,
-    0.33,
-    0.28,
-    0.37,
-    0.34,
-    0.25,
-    0.26,
-    0.30,
-    0.34,
-    0.31,
-    0.47,
-    0.52,
-    0.31,
-    0.33,
-    0.45,
-    0.48,
-    0.50,
-    0.49,
-    0.49,
-    0.48,
-    0.40,
-    0.39,
-    0.52,
-    0.53,
-    0.41,
-    0.48,
-    0.51,
-    0.61,
-    0.72,
-    0.75,
-    0.69,
-    0.66,
-    0.74,
-    0.72,
-    0.63,
-    0.67]
->>>>>>> e7052faa9db1f7e11dac454728e697f6b2a23519
 const globalTempYear = [
   1958, 1959, 1960, 1961, 1962, 1963, 1964, 1965, 1966, 1967, 1968, 1969, 1970,
   1971, 1972, 1973, 1974, 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 1983,
@@ -279,9 +160,9 @@ for (let year of allYears) {
 }
 
 //CONFIG
-<<<<<<< HEAD
 const canvas = document.getElementById("myCanvas");
 const context = canvas.getContext("2d");
+const bubbles = [];
 const currentYear = document.getElementById("currentYear");
 const timeline = document.getElementById("timeline");
 let animation;
@@ -316,20 +197,20 @@ canvas.addEventListener("click", () => {
 
 //Relative Positions and Scale
 const co2Rel = {
-  initialVal: 100,
+  initialVal: 300,
   pos: () => {
     return [canvas.width * 0.45, canvas.height * 0.45];
   },
-  color: [70, 70, 70, 0.5],
+  color: [170, 170, 170, 0.5],
   scale: 0.8,
 };
 const waterLevelRel = {
-  initialVal: 80,
+  initialVal: 100,
   pos: () => {
     return [canvas.width * 0.6, canvas.height * 0.55];
   },
   color: [0, 0, 255, 1],
-  scale: 2,
+  scale: 1.8,
 };
 const arcticIceRel = {
   initialVal: 10,
@@ -337,7 +218,7 @@ const arcticIceRel = {
     return [canvas.width * 0.75, canvas.height * 0.25];
   },
   color: [255, 235, 245, 1],
-  scale: 18,
+  scale: 10,
 };
 const antarcticIceRel = {
   initialVal: 8,
@@ -345,79 +226,8 @@ const antarcticIceRel = {
     return [canvas.width * 0.25, canvas.height * 0.75];
   },
   color: [255, 235, 245, 1],
-  scale: 18,
+  scale: 10,
 };
-=======
-const canvas = document.getElementById('myCanvas');
-const context = canvas.getContext('2d');
-const bubbles = [];
-const currentYear = document.getElementById('currentYear');
-const timeline = document.getElementById("timeline")
-let animation
-timeline.min = [...allYears][0]
-timeline.max = [...allYears][allYears.size - 1]
-
-timeline.addEventListener("input", () => {
-    currentYear.innerHTML = timeline.value
-    clearInterval(animation)
-    console.log(timeline.value, "timeline Input")
-    if (!canvas.classList.contains("paused")) {
-        startAnimation(timeline.value)
-    } else {
-        startAnimation(timeline.value, true)
-    }
-})
-canvas.addEventListener("click", () => {
-    canvas.classList.toggle("paused")
-    let btn = document.getElementById("play-pause")
-    if (canvas.classList.contains("paused")) {
-        clearInterval(animation)
-        btn.classList.add("paused")
-    } else {
-        startAnimation(timeline.value)
-        btn.classList.remove("paused")
-        btn.classList.add("play")
-        setTimeout(() => {
-            btn.classList.remove("play")
-        }, 1000)
-    }
-})
-
-//Relative Positions and Scale
-const co2Rel = {
-    initialVal: 300,
-    pos: () => {
-        return [canvas.width * 0.45, canvas.height * 0.45]
-    },
-    color: [170, 170, 170, .5],
-    scale: 0.8,
-
-}
-const waterLevelRel = {
-    initialVal: 100,
-    pos: () => {
-        return [canvas.width * 0.6, canvas.height * 0.55]
-    },
-    color: [0, 0, 255, 1],
-    scale: 1.8,
-}
-const arcticIceRel = {
-    initialVal: 10,
-    pos: () => {
-        return [canvas.width * 0.75, canvas.height * 0.25]
-    },
-    color: [255, 235, 245, 1],
-    scale: 10,
-}
-const antarcticIceRel = {
-    initialVal: 8,
-    pos: () => {
-        return [canvas.width * 0.25, canvas.height * 0.75]
-    },
-    color: [255, 235, 245, 1],
-    scale: 10,
-}
->>>>>>> e7052faa9db1f7e11dac454728e697f6b2a23519
 
 //Initial Size
 let smallest = Math.min(window.innerHeight, window.innerWidth);
@@ -426,17 +236,10 @@ canvas.height = smallest * 0.98;
 let globalScale = Math.min(canvas.height / 1000, canvas.width / 1000);
 
 function resizeCanvas() {
-<<<<<<< HEAD
   let smallest = Math.min(window.innerHeight, window.innerWidth);
-  canvas.width = smallest * 0.8;
-  canvas.height = smallest * 0.8;
-  globalScale = Math.min(canvas.height / 1200, canvas.width / 1200);
-=======
-    let smallest = Math.min(window.innerHeight, window.innerWidth);
-    canvas.width = smallest * 0.98;
-    canvas.height = smallest * 0.98;
-    globalScale = Math.min(canvas.height / 1000, canvas.width / 1000);
->>>>>>> e7052faa9db1f7e11dac454728e697f6b2a23519
+  canvas.width = smallest * 0.98;
+  canvas.height = smallest * 0.98;
+  globalScale = Math.min(canvas.height / 1000, canvas.width / 1000);
 
   //Set position of all elements
   waterBubble.setPosition(waterLevelRel.pos());
@@ -450,24 +253,19 @@ function resizeCanvas() {
   arcticIceBubble.scale = arcticIceRel.scale * globalScale;
   antarcticIceBubble.scale = antarcticIceRel.scale * globalScale;
 
-<<<<<<< HEAD
+  waterBubble.scale = waterLevelRel.scale * globalScale;
+  co2Bubble.scale = co2Rel.scale * globalScale;
+  arcticIceBubble.scale = arcticIceRel.scale * globalScale;
+  antarcticIceBubble.scale = antarcticIceRel.scale * globalScale;
+
   //Clear the canvas
   context.clearRect(0, 0, canvas.width, canvas.height);
-=======
-    waterBubble.scale = waterLevelRel.scale * globalScale
-    co2Bubble.scale = co2Rel.scale * globalScale
-    arcticIceBubble.scale = arcticIceRel.scale * globalScale
-    antarcticIceBubble.scale = antarcticIceRel.scale * globalScale
 
-    //Clear the canvas
-    context.clearRect(0, 0, canvas.width, canvas.height);
-
-    //Draw all elements
-    waterBubble.draw()
-    co2Bubble.draw()
-    arcticIceBubble.draw()
-    antarcticIceBubble.draw()
->>>>>>> e7052faa9db1f7e11dac454728e697f6b2a23519
+  //Draw all elements
+  waterBubble.draw();
+  co2Bubble.draw();
+  arcticIceBubble.draw();
+  antarcticIceBubble.draw();
 
   //Draw all elements
   waterBubble.draw();
@@ -478,7 +276,6 @@ function resizeCanvas() {
 
 //Resize the canvas when the window is resized
 
-<<<<<<< HEAD
 window.addEventListener("resize", () => {
   resizeCanvas();
 });
@@ -488,58 +285,48 @@ let waterBubble = new Bubble(
   waterLevelRel.pos(),
   waterLevelRel.initialVal,
   waterLevelRel.color,
-  waterLevelRel.scale * globalScale
+  waterLevelRel.scale * globalScale,
+  "Water Level",
+  "mm"
 );
 waterBubble.draw();
+waterBubble.temp = {
+  value: +0.0,
+  unit: "Celsius",
+};
 let co2Bubble = new Bubble(
   co2Rel.pos(),
   co2Rel.initialVal,
   co2Rel.color,
-  co2Rel.scale * globalScale
+  co2Rel.scale * globalScale,
+  "Carbon dioxide",
+  "ppm"
 );
 co2Bubble.draw();
 let arcticIceBubble = new Bubble(
   arcticIceRel.pos(),
   arcticIceRel.initialVal,
   arcticIceRel.color,
-  arcticIceRel.scale * globalScale
+  arcticIceRel.scale * globalScale,
+  "Arctic Ice",
+  "million km²"
 );
 arcticIceBubble.draw();
 let antarcticIceBubble = new Bubble(
   antarcticIceRel.pos(),
   antarcticIceRel.initialVal,
   antarcticIceRel.color,
-  antarcticIceRel.scale * globalScale
+  antarcticIceRel.scale * globalScale,
+  "Antarctic Ice",
+  "million km²"
 );
 antarcticIceBubble.draw();
-=======
-window.addEventListener('resize', () => {
-    resizeCanvas()
-});
-
-
-//CREATION
-let waterBubble = new Bubble(waterLevelRel.pos(), waterLevelRel.initialVal, waterLevelRel.color, waterLevelRel.scale * globalScale, "Water Level", "mm")
-waterBubble.draw()
-waterBubble.temp = {
-    value: +0.00,
-    unit: "Celsius"
-}
-let co2Bubble = new Bubble(co2Rel.pos(), co2Rel.initialVal, co2Rel.color, co2Rel.scale * globalScale, "Carbon dioxide", "ppm")
-co2Bubble.draw()
-let arcticIceBubble = new Bubble(arcticIceRel.pos(), arcticIceRel.initialVal, arcticIceRel.color, arcticIceRel.scale * globalScale, "Arctic Ice", "million km²")
-arcticIceBubble.draw()
-let antarcticIceBubble = new Bubble(antarcticIceRel.pos(), antarcticIceRel.initialVal, antarcticIceRel.color, antarcticIceRel.scale * globalScale, "Antarctic Ice", "million km²")
-antarcticIceBubble.draw()
 
 bubbles.push(waterBubble, co2Bubble, arcticIceBubble, antarcticIceBubble);
-
->>>>>>> e7052faa9db1f7e11dac454728e697f6b2a23519
 
 //ANIMATION
 
 function animate(year) {
-<<<<<<< HEAD
   console.log(year, "year in animation");
   //Update the size of the bubbles based on the data
   context.clearRect(0, 0, canvas.width, canvas.height);
@@ -549,6 +336,21 @@ function animate(year) {
   let antarcticIce = allData[year].antarcticIce;
   let globalTemp = allData[year].globalTemp;
   currentYear.innerHTML = year;
+  waterBubble.temp = {
+    value: globalTemp !== undefined ? globalTemp.value : undefined,
+    unit: "Celsius",
+  };
+
+  waterBubble.changeColor(
+    globalTemp !== undefined
+      ? [
+          allData[year].globalTemp.value * 300,
+          0,
+          255 - allData[year].globalTemp.value * 400,
+          1,
+        ]
+      : [0, 0, 255, 1]
+  );
   waterBubble.setSize(
     waterLevel !== undefined
       ? waterLevelRel.initialVal + allData[year].waterLevel.value
@@ -568,28 +370,6 @@ function animate(year) {
       : antarcticIceBubble.radius
   );
   timeline.value = year;
-=======
-    console.log(year, "year in animation")
-    //Update the size of the bubbles based on the data
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    let waterLevel = allData[year].waterLevel
-    let co2 = allData[year].co2
-    let arcticIce = allData[year].arcticIce
-    let antarcticIce = allData[year].antarcticIce
-    let globalTemp = allData[year].globalTemp
-    currentYear.innerHTML = year
-    waterBubble.temp = {
-        value: globalTemp !== undefined ? globalTemp.value : undefined,
-        unit: "Celsius"
-    }
-
-    waterBubble.changeColor(globalTemp !== undefined ? [allData[year].globalTemp.value * 300, 0, 255 - allData[year].globalTemp.value * 400, 1] : [0, 0, 255, 1])
-    waterBubble.setSize(waterLevel !== undefined ? waterLevelRel.initialVal + allData[year].waterLevel.value : waterBubble.radius)
-    co2Bubble.setSize(co2 !== undefined ? allData[year].co2.value : co2Bubble.radius)
-    arcticIceBubble.setSize(arcticIce !== undefined ? allData[year].arcticIce.value : arcticIceBubble.radius)
-    antarcticIceBubble.setSize(antarcticIce !== undefined ? allData[year].antarcticIce.value : antarcticIceBubble.radius)
-    timeline.value = year
->>>>>>> e7052faa9db1f7e11dac454728e697f6b2a23519
 }
 
 //Animate the bubbles every 1000ms year by year
@@ -600,8 +380,14 @@ function startAnimation(year, once = false) {
     animate(year);
     return;
   }
+}
 
-<<<<<<< HEAD
+function startAnimation(year, once = false) {
+  if (once) {
+    animate(year);
+    return;
+  }
+
   animation = setInterval(() => {
     //Clear the canvas
     if (year < lastYear) {
@@ -609,103 +395,51 @@ function startAnimation(year, once = false) {
     } else {
       //Clear the interval when the last year is reached
       clearInterval(animation);
+      canvas.classList.add("paused");
     }
     animate(year);
     year++;
     //console.debug(year, lastYear)
   }, 150);
-=======
-function startAnimation(year, once = false) {
-
-    if (once) {
-        animate(year)
-        return
-    }
-
-    animation = setInterval(() => {
-        //Clear the canvas
-        if (year < lastYear) {
-            context.clearRect(0, 0, canvas.width, canvas.height);
-        } else {
-            //Clear the interval when the last year is reached
-            clearInterval(animation);
-            canvas.classList.add("paused")
-        }
-        animate(year)
-        year++
-        //console.debug(year, lastYear)
-    }, 150)
->>>>>>> e7052faa9db1f7e11dac454728e697f6b2a23519
 }
 let lastHoverBubble;
 canvas.addEventListener("bubbleHover", (e) => {
-    let bubble = e.bubble
-    if(lastHoverBubble !== bubble){
-        lastHoverBubble = bubble
-    }else {
-        return
-    }
+  let bubble = e.bubble;
+  if (lastHoverBubble !== bubble) {
+    lastHoverBubble = bubble;
+  } else {
+    return;
+  }
 
-<<<<<<< HEAD
+  //Redraw all bubbles except the hovered one
+  context.clearRect(0, 0, canvas.width, canvas.height);
+
+  bubbles.forEach((b) => {
+    if (b !== bubble) {
+      b.draw();
+    } else {
+      console.log(b.text);
+    }
+  });
+});
+
 function future(year) {
   if (allData[year] !== undefined) {
     if (allData[year].antarcticIce !== undefined) {
       return allData[year].antarcticIce;
-=======
-
-
-    //Redraw all bubbles except the hovered one
-    context.clearRect(0, 0, canvas.width, canvas.height);
-
-    bubbles.forEach(b => {
-        if (b !== bubble) {
-            b.draw()
-        } else {
-            console.log(b.text)
-
-        }
-    });
-
-})
-
-function future(year) {
-    if (allData[year] !== undefined) {
-        if (allData[year].antarcticIce !== undefined) {
-            return allData[year].antarcticIce
-        }
->>>>>>> e7052faa9db1f7e11dac454728e697f6b2a23519
-    }
-  }
-
-<<<<<<< HEAD
-  if (year < timeline.min + 2) {
-    //DONT RUN WHEN IN THE PAST
-    return;
-  } else {
-    console.log(year);
-    if (allData[year - 2].antarcticIce !== undefined) {
-      //RECHNEN AND PUSH
-      return;
-    } else {
-      future(year - 1);
-=======
-
-    if (year < timeline.min + 2) {
-        //DONT RUN WHEN IN THE PAST
-
-    } else {
-        if (allData[year - 2].antarcticIce !== undefined) {
-            //RECHNEN AND PUSH
-
-        } else {
-            future(year - 1)
-        }
-
-
->>>>>>> e7052faa9db1f7e11dac454728e697f6b2a23519
     }
   }
 }
+
+//if (year < timeline.min + 2) {
+//DONT RUN WHEN IN THE PAST
+//} else {
+// if (allData[year - 2].antarcticIce !== undefined) {
+//RECHNEN AND PUSH
+// } else {
+//future(year - 1);
+// }
+//}
 
 function future1(wunschjahr) {
   let year1 = antarcticIceYear[antarcticIceYear.length - 1]; //2021
@@ -728,7 +462,7 @@ function future1(wunschjahr) {
   }
   return stand1year;
 }
-console.log(future1(2027));
+//console.log(future1(2027));
 
 function future2(wunschjahr) {
   let year1 = arcticIceYear[arcticIceYear.length - 1]; //2021
@@ -751,7 +485,7 @@ function future2(wunschjahr) {
   }
   return stand1year;
 }
-console.log(future2(2023));
+//console.log(future2(2023));
 
 function future3(wunschjahr) {
   let year1 = globalTempYear[globalTempYear.length - 1]; //2021
@@ -774,4 +508,49 @@ function future3(wunschjahr) {
   }
   return stand1year;
 }
-console.log(future3(2023));
+//console.log(future3(2023));
+
+function future4(wunschjahr) {
+  let year1 = waterLevelYear[waterLevelYear.length - 1]; //2021
+  let stand1year = waterLevel1[waterLevel1.length - 1]; //2.7
+  let year2 = waterLevelYear[waterLevelYear.length - 2]; //2020
+  let stand2year = waterLevel1[waterLevel1.length - 2]; //2.74
+  let stand2safe;
+  let newyear;
+  while (wunschjahr != year1) {
+    stand2safe = stand1year;
+    newyear = year1 + 1;
+
+    stand1year =
+      stand2year +
+      ((newyear - year2) * (stand1year - stand2year)) / (year1 - year2);
+
+    year2 = year2 + 1;
+    year1 = newyear;
+    stand2year = stand2safe;
+  }
+  return stand1year;
+}
+//console.log(future5(2023));
+function future5(wunschjahr) {
+  let year1 = co2Year[co2Year.length - 1]; //2021
+  let stand1year = co21[co21.length - 1]; //2.7
+  let year2 = co2Year[co2Year.length - 2]; //2020
+  let stand2year = co21[co21.length - 2]; //2.74
+  let stand2safe;
+  let newyear;
+  while (wunschjahr != year1) {
+    stand2safe = stand1year;
+    newyear = year1 + 1;
+
+    stand1year =
+      stand2year +
+      ((newyear - year2) * (stand1year - stand2year)) / (year1 - year2);
+
+    year2 = year2 + 1;
+    year1 = newyear;
+    stand2year = stand2safe;
+  }
+  return stand1year;
+}
+//console.log(future5(2023));
