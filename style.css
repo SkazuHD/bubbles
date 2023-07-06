@@ -1,40 +1,54 @@
-@import url('https://fonts.googleapis.com/css2?family=Geologica:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Geologica:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.search {
+  margin-bottom: 3rem;
+}
+
+#suche {
+  background-color: #070c0f;
+  border: 2px solid #06104a;
+  border-radius: 0.5em;
+  font-size: 1.2em;
+  width: 10em;
+  transition: width 0.5s ease-in-out;
+}
+
+#suche:focus {
+  font-size: 1.5em;
+  width: 20%;
 }
 
 body {
-    padding: 0;
-    margin: 0;
-    font-family: 'Geologica', sans-serif;
-    background: #15223b;
-    color: white;
+  padding: 0;
+  margin: 0;
+  font-family: "Geologica", sans-serif;
+  background: #15223b;
+  color: white;
 }
 
 .scroll-snap-container {
-    scroll-snap-type: y mandatory;
-    height: 100vh;
-    overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  height: 100vh;
+  overflow-y: scroll;
 }
 
 .snap-item {
-    height: 100vh;
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
-    display: grid;
-    place-items: center;
-    overflow-y: scroll;
-
+  height: 100vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: grid;
+  place-items: center;
+  overflow-y: scroll;
 }
 
-#graph, #intro {
-    scrollbar-width: none;
-    -ms-overflow-style: none
-}
-
-#graph::-webkit-scrollbar, #intro::-webkit-scrollbar {
-    display: none;
+#graph,
+#intro {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 #graph {
@@ -63,72 +77,71 @@ body {
 }
 
 .chart {
-    text-align: center;
-    position: relative;
-    width: 100%;
+  text-align: center;
+  position: relative;
+  width: 100%;
 }
 
 #myCanvas {
-    pointer-events: all;
-    cursor: pointer;
+  pointer-events: all;
+  cursor: pointer;
 }
 
 #currentYear {
-    position: absolute;
-    /*Place in Center behind chart*/
-    top: 45%;
-    left: 20%;
-    writing-mode: vertical-lr;
-    text-orientation: upright;
-    letter-spacing: -0.25em;
-    transform: translate(-50%, -50%);
-    font-size: clamp(3em, 7vw, 8em);
-    margin: 0;
-    color: rgba(255, 255, 255, .7);
-    z-index: 1;
-    pointer-events: none;
-    user-select: none;
+  position: absolute;
+  /*Place in Center behind chart*/
+  top: 45%;
+  left: 20%;
+  writing-mode: vertical-lr;
+  text-orientation: upright;
+  letter-spacing: -0.25em;
+  transform: translate(-50%, -50%);
+  font-size: clamp(3em, 7vw, 8em);
+  margin: 0;
+  color: rgba(255, 255, 255, 0.7);
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
 }
 
 #play-pause {
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    user-select: none;
-    display: none;
-    width: 4rem;
-    height: 4rem;
-    background-color: transparent;
-    transition: 100ms all ease;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  user-select: none;
+  display: none;
+  width: 4rem;
+  height: 4rem;
+  background-color: transparent;
+  transition: 100ms all ease;
 }
 
 #play-pause.paused {
-    display: block;
-    border-color: transparent transparent transparent #ffffff;
-    border-width: 2rem 0 2rem 4rem;
+  display: block;
+  border-color: transparent transparent transparent #ffffff;
+  border-width: 2rem 0 2rem 4rem;
 }
 
 #play-pause.play {
-    display: block;
-    border-style: double;
-    border-width: 0 0 0 2rem;
-    border-color: transparent transparent transparent #ffffff;
+  display: block;
+  border-style: double;
+  border-width: 0 0 0 2rem;
+  border-color: transparent transparent transparent #ffffff;
 }
 
 #timeline {
-    width: 62%;
-    margin: -5rem auto 3rem auto;
-    padding: 0;
+  width: 62%;
+  margin: -5rem auto 3rem auto;
+  padding: 0;
 }
 
 /*Stupid Range Input Styling*/
-input[type=range] {
-    --fill: transparent;
-    -webkit-appearance: none;
-    margin: 18px 0;
-    width: 100%;
-    border-radius: 3rem;
+input[type="range"] {
+  --fill: transparent;
+  -webkit-appearance: none;
+  margin: 18px 0;
+  width: 100%;
+  border-radius: 3rem;
 }
-

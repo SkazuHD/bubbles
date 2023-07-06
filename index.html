@@ -1,29 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Title</title>
-    <link href="style.css" rel="stylesheet">
-</head>
-<body>
-<div class="scroll-snap-container">
-    <section class="snap-item" id="intro">
+    <link href="style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="scroll-snap-container">
+      <section class="snap-item" id="intro">
         <h1 class="title">The melting Problem</h1>
-    </section>
-    <section class="snap-item" id="graph">
+      </section>
+      <section class="snap-item" id="graph">
         <div class="chart">
-            <h2 id="currentYear">1958</h2>
-            <canvas class="paused" height="1000px" id="myCanvas" width="1000px"></canvas>
-            <button class="paused" id="play-pause"></button>
-            <label>
-                <input id="timeline" type="range">
-            </label>
+          <h2 id="currentYear">1958</h2>
+          <canvas
+            class="paused"
+            height="1000px"
+            id="myCanvas"
+            width="1000px"
+          ></canvas>
+          <button class="paused" id="play-pause"></button>
+          <label>
+            <input id="timeline" type="range" />
+          </label>
+          <div class="search">
+            <label for="suche">Jahreszahl</label>
+            <input type="search" id="suche" placeholder="Suche..." />
+          </div>
         </div>
-    </section>
-</div>
+      </section>
+    </div>
 
-
-<script src="bubble.js"></script>
-<script src="app.js"></script>
-</body>
+    <script src="bubble.js"></script>
+    <script src="app.js"></script>
+  </body>
 </html>
