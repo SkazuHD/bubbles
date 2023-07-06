@@ -38,8 +38,8 @@ body {
 }
 
 #graph {
-    background-image: url("/bg.jpg");
     background-repeat: no-repeat;
+    background-image: url("/bg.jpg");
     background-size: cover;
     background-blend-mode: multiply;
     background-position-y: -150px;
