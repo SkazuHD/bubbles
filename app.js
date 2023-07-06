@@ -201,17 +201,10 @@ const co2Rel = {
   pos: () => {
     return [canvas.width * 0.45, canvas.height * 0.45];
   },
-  color: [170, 170, 170, 0.5],
+  color: [170, 170, 170, 0.7],
   scale: 0.8,
 };
-    initialVal: 300,
-    pos: () => {
-        return [canvas.width * 0.45, canvas.height * 0.45]
-    },
-    color: [170, 170, 170, .7],
-    scale: 0.8,
 
-}
 const waterLevelRel = {
   initialVal: 100,
   pos: () => {
@@ -261,19 +254,8 @@ function resizeCanvas() {
   arcticIceBubble.scale = arcticIceRel.scale * globalScale;
   antarcticIceBubble.scale = antarcticIceRel.scale * globalScale;
 
-  waterBubble.scale = waterLevelRel.scale * globalScale;
-  co2Bubble.scale = co2Rel.scale * globalScale;
-  arcticIceBubble.scale = arcticIceRel.scale * globalScale;
-  antarcticIceBubble.scale = antarcticIceRel.scale * globalScale;
-
   //Clear the canvas
   context.clearRect(0, 0, canvas.width, canvas.height);
-
-  //Draw all elements
-  waterBubble.draw();
-  co2Bubble.draw();
-  arcticIceBubble.draw();
-  antarcticIceBubble.draw();
 
   //Draw all elements
   waterBubble.draw();
