@@ -51,6 +51,9 @@ body {
   -ms-overflow-style: none;
 }
 
+#graph::-webkit-scrollbar, #intro::-webkit-scrollbar {
+    display: none;
+}
 #graph {
     background-repeat: no-repeat;
     background-image: url("/sd_water.png");
