@@ -204,6 +204,14 @@ const co2Rel = {
   color: [170, 170, 170, 0.5],
   scale: 0.8,
 };
+    initialVal: 300,
+    pos: () => {
+        return [canvas.width * 0.45, canvas.height * 0.45]
+    },
+    color: [170, 170, 170, .7],
+    scale: 0.8,
+
+}
 const waterLevelRel = {
   initialVal: 100,
   pos: () => {
@@ -213,20 +221,20 @@ const waterLevelRel = {
   scale: 1.8,
 };
 const arcticIceRel = {
-  initialVal: 10,
+  initialVal: 7,
   pos: () => {
     return [canvas.width * 0.75, canvas.height * 0.25];
   },
   color: [255, 235, 245, 1],
-  scale: 10,
+  scale: 12,
 };
 const antarcticIceRel = {
-  initialVal: 8,
+  initialVal: 3,
   pos: () => {
     return [canvas.width * 0.25, canvas.height * 0.75];
   },
   color: [255, 235, 245, 1],
-  scale: 10,
+  scale: 12,
 };
 
 //Initial Size
@@ -402,6 +410,7 @@ function startAnimation(year, once = false) {
     //console.debug(year, lastYear)
   }, 150);
 }
+
 let lastHoverBubble;
 canvas.addEventListener("bubbleHover", (e) => {
   let bubble = e.bubble;
