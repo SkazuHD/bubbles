@@ -53,7 +53,7 @@ body {
 
 #graph {
     background-repeat: no-repeat;
-    background-image: url("/bg.jpg");
+    background-image: url("/sd_water.png");
     background-size: cover;
     background-blend-mode: multiply;
     background-position-y: -150px;
