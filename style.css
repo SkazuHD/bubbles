@@ -52,15 +52,15 @@ body {
 }
 
 #graph {
-    background-repeat: no-repeat;
-    background-image: url("/bg.jpg");
-    background-size: cover;
-    background-blend-mode: multiply;
-    background-position-y: -150px;
+  background-repeat: no-repeat;
+  background-image: url("/bg.jpg");
+  background-size: cover;
+  background-blend-mode: multiply;
+  background-position-y: -150px;
 }
 
 #graph {
-  background-image: url("https://images.unsplash.com/photo-1559825477-6f38d6332bb6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1936&q=80");
+  background-image: url("/bubbles/ice-floe-gd5b4afb0b_1920.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-blend-mode: multiply;
@@ -68,20 +68,20 @@ body {
 }
 
 .title {
-    padding: 0;
-    text-align: center;
-    margin-block-end: 1em;
-    font-size: clamp(6em, 15vw, 13rem);
-    font-weight: 900;
-    line-height: 1em;
-    letter-spacing: 0;
-    text-transform: uppercase;
-    background-color: transparent;
-    background-image: url("https://images.unsplash.com/photo-1493329025335-18542a61595f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80");
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    background-position-y: 800px;
+  padding: 0;
+  text-align: center;
+  margin-block-end: 1em;
+  font-size: clamp(6em, 15vw, 13rem);
+  font-weight: 900;
+  line-height: 1em;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  background-color: transparent;
+  background-image: url("https://images.unsplash.com/photo-1493329025335-18542a61595f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80");
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-position-y: 800px;
 }
 
 .chart {
