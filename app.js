@@ -148,7 +148,7 @@ const allYears = new Set([
 ]);
 
 //Merge all datasets into one Object by year using the Set
-const allData = {};
+let allData = {};
 for (let year of allYears) {
   allData[year] = {
     co2: co2.find((element) => element.year === year),
@@ -444,12 +444,16 @@ function future1(wunschjahr) {
     newyear = year1 + 1;
 
     stand1year =
-      stand2year +
-      ((newyear - year2) * (stand1year - stand2year)) / (year1 - year2);
+        stand2year +
+        ((newyear - year2) * (stand1year - stand2year)) / (year1 - year2);
 
     year2 = year2 + 1;
     year1 = newyear;
     stand2year = stand2safe;
+    if (allData[newyear] === undefined) {
+      allData[newyear] = {};
+    }
+    allData[newyear].antarcticIce = new Dataset(newyear,stand2safe);
   }
   return stand1year;
 }
@@ -472,6 +476,10 @@ function future2(wunschjahr) {
     year2 = year2 + 1;
     year1 = newyear;
     stand2year = stand2safe;
+    if (allData[newyear] === undefined) {
+      allData[newyear] = {};
+    }
+    allData[newyear].arcticIce = new Dataset(newyear, stand2safe);
   }
   return stand1year;
 }
@@ -489,12 +497,16 @@ function future3(wunschjahr) {
     newyear = year1 + 1;
 
     stand1year =
-      stand2year +
-      ((newyear - year2) * (stand1year - stand2year)) / (year1 - year2);
+        stand2year +
+        ((newyear - year2) * (stand1year - stand2year)) / (year1 - year2);
 
     year2 = year2 + 1;
     year1 = newyear;
     stand2year = stand2safe;
+    if (allData[newyear] === undefined) {
+      allData[newyear] = {};
+    }
+    allData[newyear].globalTemp = new Dataset(newyear, stand2safe);
   }
   return stand1year;
 }
@@ -512,12 +524,17 @@ function future4(wunschjahr) {
     newyear = year1 + 1;
 
     stand1year =
-      stand2year +
-      ((newyear - year2) * (stand1year - stand2year)) / (year1 - year2);
+        stand2year +
+        ((newyear - year2) * (stand1year - stand2year)) / (year1 - year2);
 
     year2 = year2 + 1;
     year1 = newyear;
     stand2year = stand2safe;
+    //Add to allData
+    if (allData[newyear] === undefined) {
+      allData[newyear] = {};
+    }
+    allData[newyear].waterLevel = new Dataset(newyear, stand2safe);
   }
   return stand1year;
 }
@@ -540,19 +557,25 @@ function future5(wunschjahr) {
     year2 = year2 + 1;
     year1 = newyear;
     stand2year = stand2safe;
-    console.debug(newyear);
-    console.debug(stand2safe);
-    //allData[newyear].c02.value = stand2safe;
-  }
-  return stand1year;
+    //Add to allData
+    if (allData[newyear] === undefined) {
+      allData[newyear] = {};
+    }
+    allData[newyear].co2 = new Dataset(newyear, stand2safe);
+    }
+    return stand1year;
 }
 function Futura(year) {
-  antarcticIce = future1();
-  arcticIce = future2();
-  globalTemp = future3();
-  waterLevel = future4();
-  co2 = future5();
+  let antarcticIce = future1(year);
+  let arcticIce = future2(year);
+  let globalTemp = future3(year);
+  let waterLevel = future4(year);
+  let co2 = future5(year);
 }
-
-console.log(future5(2050));
-console.debug(allData[2050].co2);
+future1(2030);
+future2(2030);
+future3(2030);
+future4(2030);
+future5(2030);
+//Futura(2030);
+console.debug(allData);
