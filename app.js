@@ -139,7 +139,7 @@ for (let i = 0; i < antarcticIce.length; i++) {
 
 // Combine all Years into one Set
 
-const allYears = new Set([
+let allYears = new Set([
   ...new Set(co2Year),
   ...new Set(waterLevelYear),
   ...new Set(globalTempYear),
@@ -201,7 +201,7 @@ const co2Rel = {
   pos: () => {
     return [canvas.width * 0.45, canvas.height * 0.45];
   },
-  color: [170, 170, 170, 0.7],
+  color: [170, 170, 170, 0.3],
   scale: 0.8,
 };
 
@@ -210,7 +210,7 @@ const waterLevelRel = {
   pos: () => {
     return [canvas.width * 0.6, canvas.height * 0.55];
   },
-  color: [0, 0, 255, 1],
+  color: [0, 0, 255, 0.6],
   scale: 1.8,
 };
 const arcticIceRel = {
@@ -218,7 +218,7 @@ const arcticIceRel = {
   pos: () => {
     return [canvas.width * 0.75, canvas.height * 0.25];
   },
-  color: [255, 235, 245, 1],
+  color: [255, 235, 245, 0.6],
   scale: 12,
 };
 const antarcticIceRel = {
@@ -226,7 +226,7 @@ const antarcticIceRel = {
   pos: () => {
     return [canvas.width * 0.25, canvas.height * 0.75];
   },
-  color: [255, 235, 245, 1],
+  color: [255, 235, 245, 0.6],
   scale: 12,
 };
 
@@ -315,7 +315,7 @@ antarcticIceBubble.draw();
 bubbles.push(waterBubble, co2Bubble, arcticIceBubble, antarcticIceBubble);
 
 //ANIMATION
-
+let lastAnimatedYear = 0;
 function animate(year) {
   console.log(year, "year in animation");
   //Update the size of the bubbles based on the data
@@ -337,9 +337,9 @@ function animate(year) {
           allData[year].globalTemp.value * 300,
           0,
           255 - allData[year].globalTemp.value * 400,
-          1,
+          0.6,
         ]
-      : [0, 0, 255, 1]
+      : [0, 0, 255, 0.6]
   );
   waterBubble.setSize(
     waterLevel !== undefined
@@ -360,6 +360,7 @@ function animate(year) {
       : antarcticIceBubble.radius
   );
   timeline.value = year;
+  lastAnimatedYear = year;
 }
 
 //Animate the bubbles every 1000ms year by year
@@ -414,23 +415,6 @@ canvas.addEventListener("bubbleHover", (e) => {
   });
 });
 
-function future(year) {
-  if (allData[year] !== undefined) {
-    if (allData[year].antarcticIce !== undefined) {
-      return allData[year].antarcticIce;
-    }
-  }
-}
-
-//if (year < timeline.min + 2) {
-//DONT RUN WHEN IN THE PAST
-//} else {
-// if (allData[year - 2].antarcticIce !== undefined) {
-//RECHNEN AND PUSH
-// } else {
-//future(year - 1);
-// }
-//}
 
 function future1(wunschjahr) {
   let year1 = antarcticIceYear[antarcticIceYear.length - 1]; //2021
@@ -571,11 +555,20 @@ function Futura(year) {
   let globalTemp = future3(year);
   let waterLevel = future4(year);
   let co2 = future5(year);
+
+  allYears = Object.keys(allData);
+  lastYear = allYears[allYears.length - 1];
+
 }
-future1(2030);
-future2(2030);
-future3(2030);
-future4(2030);
-future5(2030);
-//Futura(2030);
-console.debug(allData);
+
+document.getElementById("suche").addEventListener("change", function () {
+  let year = document.getElementById("suche").value;
+  if (isNaN(year)) {
+    alert("Bitte geben Sie eine Zahl ein!");
+    return;
+  }
+  if (year >= 2022) {
+    Futura(year);
+    startAnimation(lastAnimatedYear, true);
+  }
+});
