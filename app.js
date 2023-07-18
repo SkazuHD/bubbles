@@ -139,7 +139,7 @@ for (let i = 0; i < antarcticIce.length; i++) {
 
 // Combine all Years into one Set
 
-const allYears = new Set([
+let allYears = new Set([
   ...new Set(co2Year),
   ...new Set(waterLevelYear),
   ...new Set(globalTempYear),
@@ -148,7 +148,7 @@ const allYears = new Set([
 ]);
 
 //Merge all datasets into one Object by year using the Set
-const allData = {};
+let allData = {};
 for (let year of allYears) {
   allData[year] = {
     co2: co2.find((element) => element.year === year),
@@ -201,7 +201,7 @@ const co2Rel = {
   pos: () => {
     return [canvas.width * 0.45, canvas.height * 0.45];
   },
-  color: [170, 170, 170, 0.7],
+  color: [170, 170, 170, 0.3],
   scale: 0.8,
 };
 
@@ -210,7 +210,7 @@ const waterLevelRel = {
   pos: () => {
     return [canvas.width * 0.6, canvas.height * 0.55];
   },
-  color: [0, 0, 255, 1],
+  color: [0, 0, 255, 0.6],
   scale: 1.8,
 };
 const arcticIceRel = {
@@ -218,7 +218,7 @@ const arcticIceRel = {
   pos: () => {
     return [canvas.width * 0.75, canvas.height * 0.25];
   },
-  color: [255, 235, 245, 1],
+  color: [255, 235, 245, 0.6],
   scale: 12,
 };
 const antarcticIceRel = {
@@ -226,7 +226,7 @@ const antarcticIceRel = {
   pos: () => {
     return [canvas.width * 0.25, canvas.height * 0.75];
   },
-  color: [255, 235, 245, 1],
+  color: [255, 235, 245, 0.6],
   scale: 12,
 };
 
@@ -315,7 +315,7 @@ antarcticIceBubble.draw();
 bubbles.push(waterBubble, co2Bubble, arcticIceBubble, antarcticIceBubble);
 
 //ANIMATION
-
+let lastAnimatedYear = 0;
 function animate(year) {
   console.log(year, "year in animation");
   //Update the size of the bubbles based on the data
@@ -337,9 +337,9 @@ function animate(year) {
           allData[year].globalTemp.value * 300,
           0,
           255 - allData[year].globalTemp.value * 400,
-          1,
+          0.6,
         ]
-      : [0, 0, 255, 1]
+      : [0, 0, 255, 0.6]
   );
   waterBubble.setSize(
     waterLevel !== undefined
@@ -360,6 +360,7 @@ function animate(year) {
       : antarcticIceBubble.radius
   );
   timeline.value = year;
+  lastAnimatedYear = year;
 }
 
 //Animate the bubbles every 1000ms year by year
@@ -414,23 +415,6 @@ canvas.addEventListener("bubbleHover", (e) => {
   });
 });
 
-function future(year) {
-  if (allData[year] !== undefined) {
-    if (allData[year].antarcticIce !== undefined) {
-      return allData[year].antarcticIce;
-    }
-  }
-}
-
-//if (year < timeline.min + 2) {
-//DONT RUN WHEN IN THE PAST
-//} else {
-// if (allData[year - 2].antarcticIce !== undefined) {
-//RECHNEN AND PUSH
-// } else {
-//future(year - 1);
-// }
-//}
 
 function future1(wunschjahr) {
   let year1 = antarcticIceYear[antarcticIceYear.length - 1]; //2021
@@ -444,12 +428,16 @@ function future1(wunschjahr) {
     newyear = year1 + 1;
 
     stand1year =
-      stand2year +
-      ((newyear - year2) * (stand1year - stand2year)) / (year1 - year2);
+        stand2year +
+        ((newyear - year2) * (stand1year - stand2year)) / (year1 - year2);
 
     year2 = year2 + 1;
     year1 = newyear;
     stand2year = stand2safe;
+    if (allData[newyear] === undefined) {
+      allData[newyear] = {};
+    }
+    allData[newyear].antarcticIce = new Dataset(newyear,stand2safe);
   }
   return stand1year;
 }
@@ -472,6 +460,10 @@ function future2(wunschjahr) {
     year2 = year2 + 1;
     year1 = newyear;
     stand2year = stand2safe;
+    if (allData[newyear] === undefined) {
+      allData[newyear] = {};
+    }
+    allData[newyear].arcticIce = new Dataset(newyear, stand2safe);
   }
   return stand1year;
 }
@@ -489,12 +481,16 @@ function future3(wunschjahr) {
     newyear = year1 + 1;
 
     stand1year =
-      stand2year +
-      ((newyear - year2) * (stand1year - stand2year)) / (year1 - year2);
+        stand2year +
+        ((newyear - year2) * (stand1year - stand2year)) / (year1 - year2);
 
     year2 = year2 + 1;
     year1 = newyear;
     stand2year = stand2safe;
+    if (allData[newyear] === undefined) {
+      allData[newyear] = {};
+    }
+    allData[newyear].globalTemp = new Dataset(newyear, stand2safe);
   }
   return stand1year;
 }
@@ -512,12 +508,17 @@ function future4(wunschjahr) {
     newyear = year1 + 1;
 
     stand1year =
-      stand2year +
-      ((newyear - year2) * (stand1year - stand2year)) / (year1 - year2);
+        stand2year +
+        ((newyear - year2) * (stand1year - stand2year)) / (year1 - year2);
 
     year2 = year2 + 1;
     year1 = newyear;
     stand2year = stand2safe;
+    //Add to allData
+    if (allData[newyear] === undefined) {
+      allData[newyear] = {};
+    }
+    allData[newyear].waterLevel = new Dataset(newyear, stand2safe);
   }
   return stand1year;
 }
@@ -540,19 +541,34 @@ function future5(wunschjahr) {
     year2 = year2 + 1;
     year1 = newyear;
     stand2year = stand2safe;
-    console.debug(newyear);
-    console.debug(stand2safe);
-    //allData[newyear].c02.value = stand2safe;
-  }
-  return stand1year;
+    //Add to allData
+    if (allData[newyear] === undefined) {
+      allData[newyear] = {};
+    }
+    allData[newyear].co2 = new Dataset(newyear, stand2safe);
+    }
+    return stand1year;
 }
 function Futura(year) {
-  antarcticIce = future1();
-  arcticIce = future2();
-  globalTemp = future3();
-  waterLevel = future4();
-  co2 = future5();
+  let antarcticIce = future1(year);
+  let arcticIce = future2(year);
+  let globalTemp = future3(year);
+  let waterLevel = future4(year);
+  let co2 = future5(year);
+
+  allYears = Object.keys(allData);
+  lastYear = allYears[allYears.length - 1];
+
 }
 
-console.log(future5(2050));
-console.debug(allData[2050].co2);
+document.getElementById("suche").addEventListener("change", function () {
+  let year = document.getElementById("suche").value;
+  if (isNaN(year)) {
+    alert("Bitte geben Sie eine Zahl ein!");
+    return;
+  }
+  if (year >= 2022) {
+    Futura(year);
+    startAnimation(lastAnimatedYear, true);
+  }
+});
