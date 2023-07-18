@@ -51,16 +51,22 @@ body {
   -ms-overflow-style: none;
 }
 
+#graph::-webkit-scrollbar,
+#intro::-webkit-scrollbar {
+  display: none;
+}
+
 #graph {
+  background-image: url("/sd_water.png");
+
   background-repeat: no-repeat;
-  background-image: url("/bg.jpg");
   background-size: cover;
   background-blend-mode: multiply;
   background-position-y: -150px;
 }
 
 #graph {
-  background-image: url("/bubbles/ice-floe-gd5b4afb0b_1920.jpg");
+  background-image: url("/sd_water.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-blend-mode: multiply;
