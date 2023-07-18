@@ -453,7 +453,6 @@ function future1(wunschjahr) {
   }
   return stand1year;
 }
-//console.log(future1(2027));
 
 function future2(wunschjahr) {
   let year1 = arcticIceYear[arcticIceYear.length - 1]; //2021
@@ -541,7 +540,19 @@ function future5(wunschjahr) {
     year2 = year2 + 1;
     year1 = newyear;
     stand2year = stand2safe;
+    console.debug(newyear);
+    console.debug(stand2safe);
+    //allData[newyear].c02.value = stand2safe;
   }
   return stand1year;
 }
-//console.log(future5(2023));
+function Futura(year) {
+  antarcticIce = future1();
+  arcticIce = future2();
+  globalTemp = future3();
+  waterLevel = future4();
+  co2 = future5();
+}
+
+console.log(future5(2050));
+console.debug(allData[2050].co2);

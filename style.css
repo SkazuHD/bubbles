@@ -57,16 +57,7 @@ body {
 }
 
 #graph {
-  background-image: url("/sd_water.png");
-
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-blend-mode: multiply;
-  background-position-y: -150px;
-}
-
-#graph {
-  background-image: url("/sd_water.png");
+  background-image: url("./sd_water.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-blend-mode: multiply;
