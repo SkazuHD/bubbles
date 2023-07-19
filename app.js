@@ -201,7 +201,7 @@ const co2Rel = {
   pos: () => {
     return [canvas.width * 0.45, canvas.height * 0.45];
   },
-  color: [170, 170, 170, 0.3],
+  color: [170, 170, 170, 0.1],
   scale: 0.8,
 };
 
@@ -210,7 +210,7 @@ const waterLevelRel = {
   pos: () => {
     return [canvas.width * 0.6, canvas.height * 0.55];
   },
-  color: [0, 0, 255, 0.6],
+  color: [0, 0, 255, 0.3],
   scale: 1.8,
 };
 const arcticIceRel = {
@@ -218,7 +218,7 @@ const arcticIceRel = {
   pos: () => {
     return [canvas.width * 0.75, canvas.height * 0.25];
   },
-  color: [255, 235, 245, 0.6],
+  color: [255, 235, 245, 0.5],
   scale: 12,
 };
 const antarcticIceRel = {
@@ -226,7 +226,7 @@ const antarcticIceRel = {
   pos: () => {
     return [canvas.width * 0.25, canvas.height * 0.75];
   },
-  color: [255, 235, 245, 0.6],
+  color: [255, 235, 245, 0.5],
   scale: 12,
 };
 
@@ -337,9 +337,9 @@ function animate(year) {
           allData[year].globalTemp.value * 300,
           0,
           255 - allData[year].globalTemp.value * 400,
-          0.6,
+          0.3,
         ]
-      : [0, 0, 255, 0.6]
+      : [0, 0, 255, 0.3]
   );
   waterBubble.setSize(
     waterLevel !== undefined
@@ -391,7 +391,7 @@ function startAnimation(year, once = false) {
     animate(year);
     year++;
     //console.debug(year, lastYear)
-  }, 150);
+  }, 100);
 }
 
 let lastHoverBubble;
