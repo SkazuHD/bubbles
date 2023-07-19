@@ -232,14 +232,14 @@ const antarcticIceRel = {
 
 //Initial Size
 let smallest = Math.min(window.innerHeight, window.innerWidth);
-canvas.width = smallest * 0.98;
-canvas.height = smallest * 0.98;
+canvas.width = smallest * 1;
+canvas.height = smallest * 1;
 let globalScale = Math.min(canvas.height / 1000, canvas.width / 1000);
 
 function resizeCanvas() {
   let smallest = Math.min(window.innerHeight, window.innerWidth);
-  canvas.width = smallest * 0.98;
-  canvas.height = smallest * 0.98;
+  canvas.width = smallest * 1;
+  canvas.height = smallest * 1;
   globalScale = Math.min(canvas.height / 1000, canvas.width / 1000);
 
   //Set position of all elements
