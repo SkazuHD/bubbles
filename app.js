@@ -218,7 +218,7 @@ const arcticIceRel = {
   pos: () => {
     return [canvas.width * 0.75, canvas.height * 0.25];
   },
-  color: [255, 235, 245, 0.5],
+  color: [255, 235, 245, 0.9],
   scale: 12,
 };
 const antarcticIceRel = {
@@ -226,7 +226,7 @@ const antarcticIceRel = {
   pos: () => {
     return [canvas.width * 0.25, canvas.height * 0.75];
   },
-  color: [255, 235, 245, 0.5],
+  color: [255, 235, 245, 0.9],
   scale: 12,
 };
 
