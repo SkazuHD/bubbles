@@ -92,10 +92,13 @@ class Bubble {
             context.fillStyle = "white"
             context.font = "20px Arial"
             context.fillText(this.text, posx + offsetX, posy + offsetY)
-
-
             context.font = "14px Arial"
-            context.fillText(this.radius+" "+this.unit, posx+offsetX, posy+20+ offsetY)
+            if(this.text == "Water Level"){
+                context.fillText(this.radius-100+" "+this.unit, posx+offsetX, posy+20+ offsetY)
+            }else {
+
+                context.fillText(this.radius+" "+this.unit, posx+offsetX, posy+20+ offsetY)
+            }
 
             if(this.temp){
                 context.font = "14px Arial"
