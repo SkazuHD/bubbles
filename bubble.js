@@ -94,15 +94,15 @@ class Bubble {
             context.fillText(this.text, posx + offsetX, posy + offsetY)
             context.font = "14px Arial"
             if(this.text == "Water Level"){
-                context.fillText(this.radius-100+" "+this.unit, posx+offsetX, posy+20+ offsetY)
+                context.fillText((this.radius-100).toFixed(2)+" "+this.unit, posx+offsetX, posy+20+ offsetY)
             }else {
 
-                context.fillText(this.radius+" "+this.unit, posx+offsetX, posy+20+ offsetY)
+                context.fillText(this.radius.toFixed(2)+" "+this.unit, posx+offsetX, posy+20+ offsetY)
             }
 
             if(this.temp){
                 context.font = "14px Arial"
-                context.fillText(this.temp.value+"°C", posx+offsetX, posy+40+ offsetY)
+                context.fillText(this.temp.value.toFixed(2)+"°C", posx+offsetX, posy+40+ offsetY)
             }
 
         }
