@@ -36,9 +36,9 @@ class Bubble {
         if (outline){
             if (this.isHovered)return
             this.isHovered = true
-            context.fillStyle = "rgba(0,0,0, .5)"
+            context.fillStyle = "rgba(0,0,0, .2)"
             context.beginPath()
-            context.arc(this.ballX, this.ballY, size+5, 0, Math.PI * 2)
+            context.arc(this.ballX, this.ballY, size+2, 0, Math.PI * 2)
             context.fill()
             context.closePath()
             /*
