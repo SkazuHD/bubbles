@@ -36,9 +36,9 @@ class Bubble {
         if (outline){
             if (this.isHovered)return
             this.isHovered = true
-            context.fillStyle = "rgba(0,0,0, .5)"
+            context.fillStyle = "rgba(0,0,0, .2)"
             context.beginPath()
-            context.arc(this.ballX, this.ballY, size+5, 0, Math.PI * 2)
+            context.arc(this.ballX, this.ballY, size+2, 0, Math.PI * 2)
             context.fill()
             context.closePath()
             /*
@@ -92,14 +92,17 @@ class Bubble {
             context.fillStyle = "white"
             context.font = "20px Arial"
             context.fillText(this.text, posx + offsetX, posy + offsetY)
-
-
             context.font = "14px Arial"
-            context.fillText(this.radius+" "+this.unit, posx+offsetX, posy+20+ offsetY)
+            if(this.text == "Water Level"){
+                context.fillText((this.radius-100).toFixed(2)+" "+this.unit, posx+offsetX, posy+20+ offsetY)
+            }else {
+
+                context.fillText(this.radius.toFixed(2)+" "+this.unit, posx+offsetX, posy+20+ offsetY)
+            }
 
             if(this.temp){
                 context.font = "14px Arial"
-                context.fillText(this.temp.value+"°C", posx+offsetX, posy+40+ offsetY)
+                context.fillText(this.temp.value.toFixed(2)+"°C", posx+offsetX, posy+40+ offsetY)
             }
 
         }

@@ -218,7 +218,7 @@ const arcticIceRel = {
   pos: () => {
     return [canvas.width * 0.75, canvas.height * 0.25];
   },
-  color: [255, 235, 245, 0.5],
+  color: [255, 235, 245, 0.9],
   scale: 12,
 };
 const antarcticIceRel = {
@@ -226,20 +226,20 @@ const antarcticIceRel = {
   pos: () => {
     return [canvas.width * 0.25, canvas.height * 0.75];
   },
-  color: [255, 235, 245, 0.5],
+  color: [255, 235, 245, 0.9],
   scale: 12,
 };
 
 //Initial Size
 let smallest = Math.min(window.innerHeight, window.innerWidth);
-canvas.width = smallest * 0.98;
-canvas.height = smallest * 0.98;
+canvas.width = smallest * 1;
+canvas.height = smallest * 1;
 let globalScale = Math.min(canvas.height / 1000, canvas.width / 1000);
 
 function resizeCanvas() {
   let smallest = Math.min(window.innerHeight, window.innerWidth);
-  canvas.width = smallest * 0.98;
-  canvas.height = smallest * 0.98;
+  canvas.width = smallest * 1;
+  canvas.height = smallest * 1;
   globalScale = Math.min(canvas.height / 1000, canvas.width / 1000);
 
   //Set position of all elements

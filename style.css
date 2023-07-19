@@ -94,13 +94,14 @@ body {
 }
 
 #currentYear {
+
   position: absolute;
   /*Place in Center behind chart*/
   top: 45%;
   left: 20%;
   writing-mode: vertical-lr;
   text-orientation: upright;
-  letter-spacing: -0.25em;
+  letter-spacing: -0.45em;
   transform: translate(-50%, -100%);
   font-size: clamp(3em, 7vw, 8em);
   margin: 0;
