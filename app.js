@@ -315,7 +315,7 @@ antarcticIceBubble.draw();
 bubbles.push(waterBubble, co2Bubble, arcticIceBubble, antarcticIceBubble);
 
 //ANIMATION
-let lastAnimatedYear = 0;
+let lastAnimatedYear = 1958;
 function animate(year) {
   console.log(year, "year in animation");
   //Update the size of the bubbles based on the data
@@ -365,20 +365,13 @@ function animate(year) {
 
 //Animate the bubbles every 1000ms year by year
 let lastYear = [...allYears][allYears.size - 1];
-
+startAnimation(lastAnimatedYear, true)
 function startAnimation(year, once = false) {
   if (once) {
     animate(year);
     return;
   }
-}
-
-function startAnimation(year, once = false) {
-  if (once) {
-    animate(year);
-    return;
-  }
-
+  document.getElementById("play-pause").classList.remove("grap-attention");
   animation = setInterval(() => {
     //Clear the canvas
     if (year < lastYear) {
@@ -467,7 +460,6 @@ function future2(wunschjahr) {
   }
   return stand1year;
 }
-//console.log(future2(2023));
 
 function future3(wunschjahr) {
   let year1 = globalTempYear[globalTempYear.length - 1]; //2021
@@ -494,7 +486,6 @@ function future3(wunschjahr) {
   }
   return stand1year;
 }
-//console.log(future3(2023));
 
 function future4(wunschjahr) {
   let year1 = waterLevelYear[waterLevelYear.length - 1]; //2021
@@ -563,12 +554,19 @@ function Futura(year) {
 
 document.getElementById("suche").addEventListener("change", function () {
   let year = document.getElementById("suche").value;
+  let playBtn = document.getElementById("play-pause");
   if (isNaN(year)) {
     alert("Bitte geben Sie eine Zahl ein!");
     return;
   }
+  playBtn.classList.add("grap-attention")
+
   if (year >= 2022) {
     Futura(year);
     startAnimation(lastAnimatedYear, true);
+  }else if (year >= 1958){
+    startAnimation(year, true);
+  }else {
+    alert("Keine Daten vorhanden! Bitte geben Sie eine Zahl zwischen 1958 und 2022 ein!");
   }
 });
